@@ -3,9 +3,9 @@
 Native, asynchronous Rust SDK for Erebine, maintained by P.Industries.
 Community project; not an official Erebine SDK. MIT licensed.
 
-**Experimental 0.1:** 376 documentation/CLI-derived HTTP operation bindings, shared with
+**Experimental 0.1:** 377 documentation/CLI-derived HTTP operation bindings, shared with
 [erebine-swift](https://github.com/PIndustries/erebine-swift). Full API/schema parity
-is the target; public documentation gaps and live verification remain. Read
+is the target; live verification and authoritative schema reconciliation remain. Read
 [COVERAGE.md](COVERAGE.md) before depending on an operation in production.
 
 
@@ -14,6 +14,9 @@ messages, structured-output passthrough, stream assembly, audio, and native
 realtime transcription are available. Start with [INFERENCE.md](INFERENCE.md)
 for integration examples and a per-feature verification matrix. Management
 bindings and live validation are described in [MANAGEMENT.md](MANAGEMENT.md).
+
+Every binding also has a native method under `client.api()`; see [API.md](API.md).
+MCP prompts, resources, subscriptions, and GET/resume are covered in [MCP.md](MCP.md).
 
 ## Install
 
@@ -129,8 +132,9 @@ resources, prompts, ping, and future JSON-RPC methods. Tool results containing
 
 Set `X-Erebine-Workspace` on the dedicated client's headers to scope MCP to an
 explicit workspace; inference routing alone does not set MCP's workspace header.
-No sampling, roots, elicitation, subscription listener, or reconnect/resume support
-is advertised. No tools are called implicitly.
+Prompts, resources, subscription notifications, and explicit Last-Event-ID resume
+are supported; see [MCP.md](MCP.md). Sampling, roots, elicitation, and automatic
+reconnection are not advertised. No tools are called implicitly.
 
 ```rust,no_run
 use erebine::{mcp::McpSession, Client, json};

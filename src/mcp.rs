@@ -1,6 +1,6 @@
 //! Erebine MCP request/response sessions over Streamable HTTP (2025-06-18).
 //! Supports JSON and finite SSE POST responses. No sampling, elicitation, roots,
-//! subscription listener, or resumable event reconnection is advertised.
+//! automatic reconnection or client-side tool execution is advertised.
 use crate::{json, operations, sse::Decoder, Client, Error, Request, Response, Value};
 
 pub struct McpSession {
@@ -92,6 +92,73 @@ impl McpSession {
     pub async fn call_tool(&mut self, name: &str, arguments: Value) -> Result<Value, Error> {
         self.call("tools/call", json!({"name":name,"arguments":arguments}))
             .await
+    }
+    pub async fn ping(&mut self) -> Result<Value, Error> {
+        self.call("ping", json!({})).await
+    }
+    pub async fn list_prompts(&mut self, cursor: Option<&str>) -> Result<Value, Error> {
+        self.call(
+            "prompts/list",
+            cursor
+                .map(|c| json!({"cursor": c}))
+                .unwrap_or_else(|| json!({})),
+        )
+        .await
+    }
+    pub async fn get_prompt(
+        &mut self,
+        name: &str,
+        arguments: std::collections::BTreeMap<String, String>,
+    ) -> Result<Value, Error> {
+        self.call("prompts/get", json!({"name": name, "arguments": arguments}))
+            .await
+    }
+    pub async fn list_resources(&mut self, cursor: Option<&str>) -> Result<Value, Error> {
+        self.call(
+            "resources/list",
+            cursor
+                .map(|c| json!({"cursor": c}))
+                .unwrap_or_else(|| json!({})),
+        )
+        .await
+    }
+    pub async fn list_resource_templates(&mut self, cursor: Option<&str>) -> Result<Value, Error> {
+        self.call(
+            "resources/templates/list",
+            cursor
+                .map(|c| json!({"cursor": c}))
+                .unwrap_or_else(|| json!({})),
+        )
+        .await
+    }
+    pub async fn read_resource(&mut self, uri: &str) -> Result<Value, Error> {
+        self.call("resources/read", json!({"uri": uri})).await
+    }
+    pub async fn subscribe_resource(&mut self, uri: &str) -> Result<Value, Error> {
+        self.call("resources/subscribe", json!({"uri": uri})).await
+    }
+    pub async fn unsubscribe_resource(&mut self, uri: &str) -> Result<Value, Error> {
+        self.call("resources/unsubscribe", json!({"uri": uri}))
+            .await
+    }
+    /// Open server notifications, or resume an event stream using its last ID.
+    /// A server may refuse GET with 405. The caller owns reconnect/backoff and
+    /// dispatch; this never reissues an RPC or runs a received server request.
+    pub async fn events(&self, last_event_id: Option<&str>) -> Result<crate::EventStream, Error> {
+        if self.closed {
+            return Err(Error::Invalid("MCP session is closed".into()));
+        }
+        let mut request = self
+            .client
+            .operation(operations::MCP_GET)
+            .header("mcp-protocol-version", "2025-06-18")?;
+        if let Some(id) = &self.session_id {
+            request = request.header("mcp-session-id", id)?;
+        }
+        if let Some(id) = last_event_id {
+            request = request.header("last-event-id", id)?;
+        }
+        request.stream().await
     }
     /// Explicitly terminate this session. A server may refuse DELETE with 405.
     pub async fn close(&mut self) -> Result<(), Error> {

@@ -512,7 +512,7 @@ async fn native_realtime_transcription_websocket() {
 async fn official_cli_contracts_replay_through_native_transport() {
     let evidence: Value = serde_json::from_str(include_str!("../api/cli-contracts.json")).unwrap();
     let fixtures = evidence["requests"].as_array().unwrap();
-    assert_eq!(fixtures.len(), 271);
+    assert_eq!(fixtures.len(), 283);
     let f = Fixture::start();
     let client = f.client().header("x-fixture-echo", "1").unwrap();
     for fixture in fixtures {
@@ -528,10 +528,19 @@ async fn official_cli_contracts_replay_through_native_transport() {
         for pair in fixture["query"].as_array().unwrap() {
             request = request.query(pair[0].as_str().unwrap(), pair[1].as_str().unwrap());
         }
+        if let Some(headers) = fixture["headers"].as_object() {
+            for (name, value) in headers {
+                request = request.header(name, value.as_str().unwrap()).unwrap();
+            }
+        }
+        if let Some(ct) = fixture["content_type"].as_str() {
+            request = request.header("content-type", ct).unwrap();
+        }
         // All captured bodies are UTF-8, including synthetic multipart files.
-        let body = if fixture["content_type"]
-            .as_str()
-            .is_some_and(|ct| ct.contains("application/json"))
+        let body = if !fixture["body_base64"].as_str().unwrap().is_empty()
+            && fixture["content_type"]
+                .as_str()
+                .is_some_and(|ct| ct.contains("application/json"))
         {
             // Exercise arbitrary JSON field handling without relying on key order.
             request = request.json(&fixture["body_json"]).unwrap();
@@ -557,6 +566,22 @@ async fn official_cli_contracts_replay_through_native_transport() {
         );
         let response: Value = request.send().await.unwrap().json().unwrap();
         assert_eq!(response["method"], operation.method);
+        if let Some(headers) = fixture["headers"].as_object() {
+            for (name, value) in headers {
+                let found = response["headers"]
+                    .as_object()
+                    .unwrap()
+                    .iter()
+                    .find(|(k, _)| k.eq_ignore_ascii_case(name))
+                    .unwrap()
+                    .1;
+                assert_eq!(found, value);
+            }
+        }
+        if fixture["body_base64"] == "" {
+            assert_eq!(response["body"], "");
+        }
+
         assert_eq!(
             response["path"].as_str().unwrap(),
             format!(
@@ -578,4 +603,156 @@ async fn official_cli_contracts_replay_through_native_transport() {
             assert_eq!(response["body"].as_str().unwrap().as_bytes(), body);
         }
     }
+}
+
+#[tokio::test]
+async fn every_catalog_binding_crosses_native_transport() {
+    let f = Fixture::start();
+    for op in operations::ALL {
+        let client = Client::new(&f.origin, op.surface)
+            .unwrap()
+            .project("proj_fixture")
+            .routing(Routing::Endpoint("endpoint_fixture".into()))
+            .header("x-fixture-echo", "1")
+            .unwrap();
+        let mut request = client
+            .operation(*op)
+            .query("tag", "first + value")
+            .query("tag", "second");
+        for name in op
+            .path
+            .split('{')
+            .skip(1)
+            .map(|p| p.split('}').next().unwrap())
+        {
+            request = request.param(name, format!("fixture_{name}"));
+        }
+        let expected = request.url().unwrap();
+        let response = request
+            .send()
+            .await
+            .unwrap_or_else(|e| panic!("{}: {e}", op.name));
+        let echo: Value = response.json().unwrap();
+        assert_eq!(echo["method"], op.method, "{}", op.name);
+        assert_eq!(
+            echo["path"],
+            format!("{}?{}", expected.path(), expected.query().unwrap()),
+            "{}",
+            op.name
+        );
+    }
+}
+#[tokio::test]
+async fn native_api_methods_and_workspace_endpoint_routing() {
+    let f = Fixture::start();
+    let client = f
+        .client()
+        .routing(Routing::WorkspaceEndpoint {
+            workspace: "ws fixture".into(),
+            endpoint: "endpoint/fixture".into(),
+        })
+        .header("x-fixture-echo", "1")
+        .unwrap();
+    let echo: Value = client
+        .api()
+        .post_project_id_endpoint_slug_v1_chat_completions()
+        .json(&json!({"model":"fixture", "messages":[], "x_future":true}))
+        .unwrap()
+        .send()
+        .await
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(
+        echo["path"],
+        "/proj_test/ws%20fixture/endpoint%2Ffixture/v1/chat/completions"
+    );
+    let echo: Value = client
+        .api()
+        .patch_project_id_v1_management_endpoints_id("endpoint fixture")
+        .json(&json!({"name":"fixture"}))
+        .unwrap()
+        .send()
+        .await
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(
+        echo["path"],
+        "/proj_test/v1/management/endpoints/endpoint%20fixture"
+    );
+    assert_eq!(echo["method"], "PATCH");
+    let echo: Value = client
+        .api()
+        .options_project_id_endpoint_slug_v1_chat_completions()
+        .header("origin", "https://example.invalid")
+        .unwrap()
+        .header("access-control-request-method", "POST")
+        .unwrap()
+        .send()
+        .await
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(echo["method"], "OPTIONS");
+    let wrong = Client::new(&f.origin, Surface::Dashboard)
+        .unwrap()
+        .api()
+        .get_project_id_v1_models()
+        .url();
+    assert!(wrong.is_err());
+}
+#[tokio::test]
+async fn mcp_prompts_resources_pagination_notifications_and_resume() {
+    let f = Fixture::start();
+    let mut session = erebine::mcp::McpSession::connect(f.client()).await.unwrap();
+    assert_eq!(session.ping().await.unwrap(), json!({}));
+    let first = session.list_prompts(None).await.unwrap();
+    assert_eq!(first["nextCursor"], "fixture-next");
+    let next = session
+        .list_prompts(first["nextCursor"].as_str())
+        .await
+        .unwrap();
+    assert!(next.get("nextCursor").is_none());
+    assert_eq!(next["fixture_params"]["cursor"], "fixture-next");
+    let prompt = session
+        .get_prompt("fixture", [("topic".into(), "unicode 🌎".into())].into())
+        .await
+        .unwrap();
+    assert_eq!(
+        prompt["fixture_params"],
+        json!({"name":"fixture", "arguments":{"topic":"unicode 🌎"}})
+    );
+    let resources = session.list_resources(Some("page2")).await.unwrap();
+    assert_eq!(resources["fixture_params"]["cursor"], "page2");
+    let templates = session.list_resource_templates(None).await.unwrap();
+    assert_eq!(templates["resourceTemplates"][0]["x_vendor"], true);
+    let uri = "erebine://fixture/resource";
+    assert_eq!(
+        session.read_resource(uri).await.unwrap()["contents"][0]["text"],
+        "héllo 🌎"
+    );
+    assert_eq!(
+        session.subscribe_resource(uri).await.unwrap()["fixture_params"]["uri"],
+        uri
+    );
+    let mut events = session.events(Some("fixture-event-1")).await.unwrap();
+    let event = events.next().await.unwrap().unwrap();
+    assert_eq!(event.id.as_deref(), Some("fixture-event-2"));
+    let message: Value = event.json().unwrap();
+    assert_eq!(message["method"], "notifications/resources/updated");
+    assert_eq!(message["x_last_event_id"], "fixture-event-1");
+    assert!(events.next().await.is_none());
+    session.unsubscribe_resource(uri).await.unwrap();
+    session.close().await.unwrap();
+    assert!(session.events(None).await.is_err());
+    let refused = erebine::mcp::McpSession::connect(
+        f.client().header("x-fixture-mcp-refuse-get", "1").unwrap(),
+    )
+    .await
+    .unwrap();
+    assert!(matches!(
+        refused.events(None).await,
+        Err(Error::Api { status: 405, .. })
+    ));
 }

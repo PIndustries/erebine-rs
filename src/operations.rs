@@ -1937,6 +1937,14 @@ pub const GET_USAGE_EXPORT_UPTIME: Operation = Operation {
     surface: Surface::Dashboard,
     sources: &["https://erebine.ai/docs/usage-billing"],
 };
+/// OPTIONS /{project_id}/{endpoint_slug}/v1/chat/completions
+pub const OPTIONS_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS: Operation = Operation {
+    name: "options_project_id_endpoint_slug_v1_chat_completions",
+    method: "OPTIONS",
+    path: "/{project_id}/{endpoint_slug}/v1/chat/completions",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/endpoint-cors"],
+};
 /// PATCH /chat/api/{id_1}/memories/{id_2}
 pub const PATCH_CHAT_API_ID_1_MEMORIES_ID_2: Operation = Operation {
     name: "patch_chat_api_id_1_memories_id_2",
@@ -2923,7 +2931,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/management/join-keys",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/maintenance
 pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE: Operation = Operation {
@@ -3140,6 +3151,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_DIRECTORY: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/{id}/cancel
@@ -3162,6 +3174,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_COMPLETE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/{id}/file-chunks/{chunk_index}
@@ -3195,6 +3208,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_FILES_RELATIVE_PATH: Operation = Operati
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/{id}/parts
@@ -3206,6 +3220,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_PARTS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/{id}/resume
@@ -3217,6 +3232,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_RESUME: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/preflight
@@ -3750,6 +3766,7 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_RESPONSES_ID,
     GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_RESPONSES_ID_INPUT_ITEMS,
     GET_USAGE_EXPORT_UPTIME,
+    OPTIONS_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS,
     PATCH_CHAT_API_ID_1_MEMORIES_ID_2,
     PATCH_CHAT_API_WORKSPACES_ID,
     PATCH_CHAT_API_WORKSPACES_ID_1_DECISIONS_ID_2,

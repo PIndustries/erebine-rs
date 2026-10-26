@@ -4,6 +4,7 @@
 //! binary bodies, repeated query parameters, headers, and SSE. Unknown JSON fields
 //! remain available. See the repository coverage report for verification boundaries.
 pub mod accumulator;
+pub mod api;
 pub mod inference;
 pub mod mcp;
 pub mod operations;
@@ -77,6 +78,7 @@ pub enum Surface {
 #[derive(Clone, Debug)]
 pub enum Routing {
     Endpoint(String),
+    WorkspaceEndpoint { workspace: String, endpoint: String },
     Direct { workspace: Option<String> },
     Semantic { workspace: String },
 }
@@ -84,6 +86,10 @@ impl Routing {
     fn segments(&self) -> Vec<&str> {
         match self {
             Self::Endpoint(slug) => vec![slug],
+            Self::WorkspaceEndpoint {
+                workspace,
+                endpoint,
+            } => vec![workspace, endpoint],
             Self::Direct {
                 workspace: Some(id),
             } => vec![id, "_direct"],
