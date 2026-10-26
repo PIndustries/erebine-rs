@@ -101,6 +101,7 @@ pub const DELETE_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID: Operation = Op
         "https://erebine.ai/docs/completions",
         "https://erebine.ai/docs/tool-calling",
         "https://erebine.ai/docs/zero-data-retention",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// DELETE /{project_id}/{endpoint_slug}/v1/responses/{id}
@@ -112,7 +113,48 @@ pub const DELETE_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID: Operation = Operation
     sources: &[
         "https://erebine.ai/docs/responses",
         "https://erebine.ai/docs/zero-data-retention",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// DELETE /{project_id}/v1/admin/maintenance/windows/{id}
+pub const DELETE_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID: Operation = Operation {
+    name: "delete_project_id_v1_admin_maintenance_windows_id",
+    method: "DELETE",
+    path: "/{project_id}/v1/admin/maintenance/windows/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/admin/storage-tiers/{id}
+pub const DELETE_PROJECT_ID_V1_ADMIN_STORAGE_TIERS_ID: Operation = Operation {
+    name: "delete_project_id_v1_admin_storage_tiers_id",
+    method: "DELETE",
+    path: "/{project_id}/v1/admin/storage-tiers/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/chat-templates/{id}
+pub const DELETE_PROJECT_ID_V1_CHAT_TEMPLATES_ID: Operation = Operation {
+    name: "delete_project_id_v1_chat_templates_id",
+    method: "DELETE",
+    path: "/{project_id}/v1/chat-templates/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/chats/{id}
+pub const DELETE_PROJECT_ID_V1_CHATS_ID: Operation = Operation {
+    name: "delete_project_id_v1_chats_id",
+    method: "DELETE",
+    path: "/{project_id}/v1/chats/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/chats/{id_1}/artifacts/{id_2}
+pub const DELETE_PROJECT_ID_V1_CHATS_ID_1_ARTIFACTS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_chats_id_1_artifacts_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/chats/{id_1}/artifacts/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/chats/{id_1}/branches/{id_2}
 pub const DELETE_PROJECT_ID_V1_CHATS_ID_1_BRANCHES_ID_2: Operation = Operation {
@@ -121,6 +163,22 @@ pub const DELETE_PROJECT_ID_V1_CHATS_ID_1_BRANCHES_ID_2: Operation = Operation {
     path: "/{project_id}/v1/chats/{id_1}/branches/{id_2}",
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/chat-branching"],
+};
+/// DELETE /{project_id}/v1/chats/{id_1}/members/{id_2}
+pub const DELETE_PROJECT_ID_V1_CHATS_ID_1_MEMBERS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_chats_id_1_members_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/chats/{id_1}/members/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/chats/{id}/exec-workspace
+pub const DELETE_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE: Operation = Operation {
+    name: "delete_project_id_v1_chats_id_exec_workspace",
+    method: "DELETE",
+    path: "/{project_id}/v1/chats/{id}/exec-workspace",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/conversations/{id}
 pub const DELETE_PROJECT_ID_V1_CONVERSATIONS_ID: Operation = Operation {
@@ -131,6 +189,7 @@ pub const DELETE_PROJECT_ID_V1_CONVERSATIONS_ID: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// DELETE /{project_id}/v1/conversations/{id_1}/items/{id_2}
@@ -142,6 +201,7 @@ pub const DELETE_PROJECT_ID_V1_CONVERSATIONS_ID_1_ITEMS_ID_2: Operation = Operat
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// DELETE /{project_id}/v1/exports/{id}
@@ -150,7 +210,10 @@ pub const DELETE_PROJECT_ID_V1_EXPORTS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/exports/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/data-export"],
+    sources: &[
+        "https://erebine.ai/docs/data-export",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/files/{id}
 pub const DELETE_PROJECT_ID_V1_FILES_ID: Operation = Operation {
@@ -158,7 +221,10 @@ pub const DELETE_PROJECT_ID_V1_FILES_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/files/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/files"],
+    sources: &[
+        "https://erebine.ai/docs/files",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/agents/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID: Operation = Operation {
@@ -166,7 +232,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/management/agents/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/api-keys/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID: Operation = Operation {
@@ -174,7 +243,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/management/api-keys/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/endpoints/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID: Operation = Operation {
@@ -182,7 +254,18 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/management/endpoints/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/endpoint-cors"],
+    sources: &[
+        "https://erebine.ai/docs/endpoint-cors",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// DELETE /{project_id}/v1/management/endpoints/{id_1}/agents/{id_2}
+pub const DELETE_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_1_AGENTS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_management_endpoints_id_1_agents_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/management/endpoints/{id_1}/agents/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/management/join-keys/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS_ID: Operation = Operation {
@@ -190,7 +273,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/management/join-keys/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/maintenance/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID: Operation = Operation {
@@ -198,7 +284,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID: Operation = Operation 
     method: "DELETE",
     path: "/{project_id}/v1/management/maintenance/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/project/invitations/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID: Operation = Operation {
@@ -206,7 +295,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID: Operation = Op
     method: "DELETE",
     path: "/{project_id}/v1/management/project/invitations/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/project/members/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID: Operation = Operation {
@@ -214,7 +306,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID: Operation = Operat
     method: "DELETE",
     path: "/{project_id}/v1/management/project/members/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/management/semantic-router/rules/{id}
 pub const DELETE_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID: Operation = Operation {
@@ -222,7 +317,10 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID: Operation = 
     method: "DELETE",
     path: "/{project_id}/v1/management/semantic-router/rules/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/mcp
 pub const DELETE_PROJECT_ID_V1_MCP: Operation = Operation {
@@ -244,7 +342,16 @@ pub const DELETE_PROJECT_ID_V1_MODELS_ID: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/erectl/models",
         "https://erebine.ai/docs/model-management",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// DELETE /{project_id}/v1/settings/project
+pub const DELETE_PROJECT_ID_V1_SETTINGS_PROJECT: Operation = Operation {
+    name: "delete_project_id_v1_settings_project",
+    method: "DELETE",
+    path: "/{project_id}/v1/settings/project",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/slos/{id}
 pub const DELETE_PROJECT_ID_V1_SLOS_ID: Operation = Operation {
@@ -252,7 +359,10 @@ pub const DELETE_PROJECT_ID_V1_SLOS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/slos/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/uploads/{id}
 pub const DELETE_PROJECT_ID_V1_UPLOADS_ID: Operation = Operation {
@@ -263,6 +373,7 @@ pub const DELETE_PROJECT_ID_V1_UPLOADS_ID: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/erectl/uploads",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// DELETE /{project_id}/v1/webhooks/{id}
@@ -271,7 +382,10 @@ pub const DELETE_PROJECT_ID_V1_WEBHOOKS_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/webhooks/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/webhooks"],
+    sources: &[
+        "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// DELETE /{project_id}/v1/workspaces/{id}
 pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
@@ -279,7 +393,34 @@ pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
     method: "DELETE",
     path: "/{project_id}/v1/workspaces/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// DELETE /{project_id}/v1/workspaces/{id_1}/agents/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_agents_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/agents/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/workspaces/{id_1}/auto-approvals/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AUTO_APPROVALS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_auto_approvals_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/auto-approvals/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// DELETE /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_decisions_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/decisions/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/workspaces/{id_1}/files/{id_2}
 pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2: Operation = Operation {
@@ -288,6 +429,14 @@ pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2: Operation = Operation
     path: "/{project_id}/v1/workspaces/{id_1}/files/{id_2}",
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/document-workspace"],
+};
+/// DELETE /{project_id}/v1/workspaces/{id_1}/members/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMBERS_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_members_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/members/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/v1/workspaces/{id_1}/memories/{id_2}
 pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2: Operation = Operation {
@@ -298,7 +447,16 @@ pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2: Operation = Operat
     sources: &[
         "https://erebine.ai/docs/chat-memory",
         "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// DELETE /{project_id}/v1/workspaces/{id_1}/milestones/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MILESTONES_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_milestones_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/milestones/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// DELETE /{project_id}/{workspace_id}/_direct/v1/responses/{id}
 pub const DELETE_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_RESPONSES_ID: Operation = Operation {
@@ -560,6 +718,7 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS: Operation = Operatio
     sources: &[
         "https://erebine.ai/docs/completions",
         "https://erebine.ai/docs/tool-calling",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/{endpoint_slug}/v1/chat/completions/{id}
@@ -572,6 +731,7 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID: Operation = Opera
         "https://erebine.ai/docs/completions",
         "https://erebine.ai/docs/sdk-integrations",
         "https://erebine.ai/docs/tool-calling",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/{endpoint_slug}/v1/chat/completions/{id}/messages
@@ -583,6 +743,7 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID_MESSAGES: Operatio
     sources: &[
         "https://erebine.ai/docs/completions",
         "https://erebine.ai/docs/tool-calling",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/{endpoint_slug}/v1/models
@@ -610,7 +771,10 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/{endpoint_slug}/v1/responses",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/responses"],
+    sources: &[
+        "https://erebine.ai/docs/responses",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/{endpoint_slug}/v1/responses/{id}
 pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID: Operation = Operation {
@@ -618,7 +782,10 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/{endpoint_slug}/v1/responses/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/responses"],
+    sources: &[
+        "https://erebine.ai/docs/responses",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/{endpoint_slug}/v1/responses/{id}/input_items
 pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_INPUT_ITEMS: Operation = Operation {
@@ -626,7 +793,114 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_INPUT_ITEMS: Operation = 
     method: "GET",
     path: "/{project_id}/{endpoint_slug}/v1/responses/{id}/input_items",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/responses"],
+    sources: &[
+        "https://erebine.ai/docs/responses",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/admin/anchors
+pub const GET_PROJECT_ID_V1_ADMIN_ANCHORS: Operation = Operation {
+    name: "get_project_id_v1_admin_anchors",
+    method: "GET",
+    path: "/{project_id}/v1/admin/anchors",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/anchors/{id}
+pub const GET_PROJECT_ID_V1_ADMIN_ANCHORS_ID: Operation = Operation {
+    name: "get_project_id_v1_admin_anchors_id",
+    method: "GET",
+    path: "/{project_id}/v1/admin/anchors/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/cache/keys
+pub const GET_PROJECT_ID_V1_ADMIN_CACHE_KEYS: Operation = Operation {
+    name: "get_project_id_v1_admin_cache_keys",
+    method: "GET",
+    path: "/{project_id}/v1/admin/cache/keys",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/cache/stats
+pub const GET_PROJECT_ID_V1_ADMIN_CACHE_STATS: Operation = Operation {
+    name: "get_project_id_v1_admin_cache_stats",
+    method: "GET",
+    path: "/{project_id}/v1/admin/cache/stats",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/consumption
+pub const GET_PROJECT_ID_V1_ADMIN_CONSUMPTION: Operation = Operation {
+    name: "get_project_id_v1_admin_consumption",
+    method: "GET",
+    path: "/{project_id}/v1/admin/consumption",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/health
+pub const GET_PROJECT_ID_V1_ADMIN_HEALTH: Operation = Operation {
+    name: "get_project_id_v1_admin_health",
+    method: "GET",
+    path: "/{project_id}/v1/admin/health",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/maintenance/windows
+pub const GET_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS: Operation = Operation {
+    name: "get_project_id_v1_admin_maintenance_windows",
+    method: "GET",
+    path: "/{project_id}/v1/admin/maintenance/windows",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/maintenance/windows/{id}
+pub const GET_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID: Operation = Operation {
+    name: "get_project_id_v1_admin_maintenance_windows_id",
+    method: "GET",
+    path: "/{project_id}/v1/admin/maintenance/windows/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/private-agents
+pub const GET_PROJECT_ID_V1_ADMIN_PRIVATE_AGENTS: Operation = Operation {
+    name: "get_project_id_v1_admin_private_agents",
+    method: "GET",
+    path: "/{project_id}/v1/admin/private-agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/project-endpoints
+pub const GET_PROJECT_ID_V1_ADMIN_PROJECT_ENDPOINTS: Operation = Operation {
+    name: "get_project_id_v1_admin_project_endpoints",
+    method: "GET",
+    path: "/{project_id}/v1/admin/project-endpoints",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/storage/dashboard
+pub const GET_PROJECT_ID_V1_ADMIN_STORAGE_DASHBOARD: Operation = Operation {
+    name: "get_project_id_v1_admin_storage_dashboard",
+    method: "GET",
+    path: "/{project_id}/v1/admin/storage/dashboard",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/storage-tiers
+pub const GET_PROJECT_ID_V1_ADMIN_STORAGE_TIERS: Operation = Operation {
+    name: "get_project_id_v1_admin_storage_tiers",
+    method: "GET",
+    path: "/{project_id}/v1/admin/storage-tiers",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/admin/users
+pub const GET_PROJECT_ID_V1_ADMIN_USERS: Operation = Operation {
+    name: "get_project_id_v1_admin_users",
+    method: "GET",
+    path: "/{project_id}/v1/admin/users",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/batches
 pub const GET_PROJECT_ID_V1_BATCHES: Operation = Operation {
@@ -634,7 +908,10 @@ pub const GET_PROJECT_ID_V1_BATCHES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/batches",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/batch"],
+    sources: &[
+        "https://erebine.ai/docs/batch",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/batches/{id}
 pub const GET_PROJECT_ID_V1_BATCHES_ID: Operation = Operation {
@@ -642,7 +919,10 @@ pub const GET_PROJECT_ID_V1_BATCHES_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/batches/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/batch"],
+    sources: &[
+        "https://erebine.ai/docs/batch",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/chat-templates
 pub const GET_PROJECT_ID_V1_CHAT_TEMPLATES: Operation = Operation {
@@ -650,7 +930,50 @@ pub const GET_PROJECT_ID_V1_CHAT_TEMPLATES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/chat-templates",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/templates"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/templates",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/chat-templates/{id}
+pub const GET_PROJECT_ID_V1_CHAT_TEMPLATES_ID: Operation = Operation {
+    name: "get_project_id_v1_chat_templates_id",
+    method: "GET",
+    path: "/{project_id}/v1/chat-templates/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chat-templates/{id}/versions
+pub const GET_PROJECT_ID_V1_CHAT_TEMPLATES_ID_VERSIONS: Operation = Operation {
+    name: "get_project_id_v1_chat_templates_id_versions",
+    method: "GET",
+    path: "/{project_id}/v1/chat-templates/{id}/versions",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats
+pub const GET_PROJECT_ID_V1_CHATS: Operation = Operation {
+    name: "get_project_id_v1_chats",
+    method: "GET",
+    path: "/{project_id}/v1/chats",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}
+pub const GET_PROJECT_ID_V1_CHATS_ID: Operation = Operation {
+    name: "get_project_id_v1_chats_id",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}/artifacts
+pub const GET_PROJECT_ID_V1_CHATS_ID_ARTIFACTS: Operation = Operation {
+    name: "get_project_id_v1_chats_id_artifacts",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/artifacts",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/chats/{id}/branches
 pub const GET_PROJECT_ID_V1_CHATS_ID_BRANCHES: Operation = Operation {
@@ -658,7 +981,50 @@ pub const GET_PROJECT_ID_V1_CHATS_ID_BRANCHES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/chats/{id}/branches",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/chat-branching"],
+    sources: &[
+        "https://erebine.ai/docs/chat-branching",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/chats/{id}/context
+pub const GET_PROJECT_ID_V1_CHATS_ID_CONTEXT: Operation = Operation {
+    name: "get_project_id_v1_chats_id_context",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/context",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}/exec-workspace
+pub const GET_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE: Operation = Operation {
+    name: "get_project_id_v1_chats_id_exec_workspace",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/exec-workspace",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}/members
+pub const GET_PROJECT_ID_V1_CHATS_ID_MEMBERS: Operation = Operation {
+    name: "get_project_id_v1_chats_id_members",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/members",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}/memories
+pub const GET_PROJECT_ID_V1_CHATS_ID_MEMORIES: Operation = Operation {
+    name: "get_project_id_v1_chats_id_memories",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/memories",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/chats/{id}/messages
+pub const GET_PROJECT_ID_V1_CHATS_ID_MESSAGES: Operation = Operation {
+    name: "get_project_id_v1_chats_id_messages",
+    method: "GET",
+    path: "/{project_id}/v1/chats/{id}/messages",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/conversations
 pub const GET_PROJECT_ID_V1_CONVERSATIONS: Operation = Operation {
@@ -669,6 +1035,7 @@ pub const GET_PROJECT_ID_V1_CONVERSATIONS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/conversations/{id}
@@ -680,6 +1047,7 @@ pub const GET_PROJECT_ID_V1_CONVERSATIONS_ID: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/conversations/{id_1}/items/{id_2}
@@ -699,6 +1067,7 @@ pub const GET_PROJECT_ID_V1_CONVERSATIONS_ID_ITEMS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/endpoints
@@ -707,7 +1076,10 @@ pub const GET_PROJECT_ID_V1_ENDPOINTS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/endpoints",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/endpoints/{id}/slos
 pub const GET_PROJECT_ID_V1_ENDPOINTS_ID_SLOS: Operation = Operation {
@@ -731,7 +1103,10 @@ pub const GET_PROJECT_ID_V1_EXEC_APPROVALS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exec/approvals",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem/approvals"],
+    sources: &[
+        "https://erebine.ai/docs/eem/approvals",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/exec/approvals/{id}
 pub const GET_PROJECT_ID_V1_EXEC_APPROVALS_ID: Operation = Operation {
@@ -739,7 +1114,10 @@ pub const GET_PROJECT_ID_V1_EXEC_APPROVALS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exec/approvals/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem/approvals"],
+    sources: &[
+        "https://erebine.ai/docs/eem/approvals",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/exec/approvals/stream
 pub const GET_PROJECT_ID_V1_EXEC_APPROVALS_STREAM: Operation = Operation {
@@ -749,13 +1127,40 @@ pub const GET_PROJECT_ID_V1_EXEC_APPROVALS_STREAM: Operation = Operation {
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/eem/approvals"],
 };
+/// GET /{project_id}/v1/exec/invocations
+pub const GET_PROJECT_ID_V1_EXEC_INVOCATIONS: Operation = Operation {
+    name: "get_project_id_v1_exec_invocations",
+    method: "GET",
+    path: "/{project_id}/v1/exec/invocations",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// GET /{project_id}/v1/exec/invocations/{id}
 pub const GET_PROJECT_ID_V1_EXEC_INVOCATIONS_ID: Operation = Operation {
     name: "get_project_id_v1_exec_invocations_id",
     method: "GET",
     path: "/{project_id}/v1/exec/invocations/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem"],
+    sources: &[
+        "https://erebine.ai/docs/eem",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/exec/learnings
+pub const GET_PROJECT_ID_V1_EXEC_LEARNINGS: Operation = Operation {
+    name: "get_project_id_v1_exec_learnings",
+    method: "GET",
+    path: "/{project_id}/v1/exec/learnings",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/exec/learnings/{id}
+pub const GET_PROJECT_ID_V1_EXEC_LEARNINGS_ID: Operation = Operation {
+    name: "get_project_id_v1_exec_learnings_id",
+    method: "GET",
+    path: "/{project_id}/v1/exec/learnings/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/exec/tools
 pub const GET_PROJECT_ID_V1_EXEC_TOOLS: Operation = Operation {
@@ -763,7 +1168,10 @@ pub const GET_PROJECT_ID_V1_EXEC_TOOLS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exec/tools",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem"],
+    sources: &[
+        "https://erebine.ai/docs/eem",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/exec/tools/{id}
 pub const GET_PROJECT_ID_V1_EXEC_TOOLS_ID: Operation = Operation {
@@ -771,7 +1179,10 @@ pub const GET_PROJECT_ID_V1_EXEC_TOOLS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exec/tools/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/exec"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/exec",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/exports
 pub const GET_PROJECT_ID_V1_EXPORTS: Operation = Operation {
@@ -787,7 +1198,10 @@ pub const GET_PROJECT_ID_V1_EXPORTS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exports/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/data-export"],
+    sources: &[
+        "https://erebine.ai/docs/data-export",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/exports/{id}/download
 pub const GET_PROJECT_ID_V1_EXPORTS_ID_DOWNLOAD: Operation = Operation {
@@ -795,7 +1209,10 @@ pub const GET_PROJECT_ID_V1_EXPORTS_ID_DOWNLOAD: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/exports/{id}/download",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/data-export"],
+    sources: &[
+        "https://erebine.ai/docs/data-export",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/files
 pub const GET_PROJECT_ID_V1_FILES: Operation = Operation {
@@ -803,7 +1220,10 @@ pub const GET_PROJECT_ID_V1_FILES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/files",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/files"],
+    sources: &[
+        "https://erebine.ai/docs/files",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/files/{id}
 pub const GET_PROJECT_ID_V1_FILES_ID: Operation = Operation {
@@ -811,7 +1231,10 @@ pub const GET_PROJECT_ID_V1_FILES_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/files/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/files"],
+    sources: &[
+        "https://erebine.ai/docs/files",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/files/{id}/content
 pub const GET_PROJECT_ID_V1_FILES_ID_CONTENT: Operation = Operation {
@@ -822,6 +1245,7 @@ pub const GET_PROJECT_ID_V1_FILES_ID_CONTENT: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/files",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/health/dashboard
@@ -833,6 +1257,7 @@ pub const GET_PROJECT_ID_V1_HEALTH_DASHBOARD: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/erectl/platform",
         "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/management/agents
@@ -841,7 +1266,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/agents",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/agents/{id}
 pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID: Operation = Operation {
@@ -849,7 +1277,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/agents/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/agents/{id}/events
 pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_EVENTS: Operation = Operation {
@@ -860,7 +1291,16 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_EVENTS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/eem/guide/credential-rotation",
         "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// GET /{project_id}/v1/management/agents/{id}/logs/stream
+pub const GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_LOGS_STREAM: Operation = Operation {
+    name: "get_project_id_v1_management_agents_id_logs_stream",
+    method: "GET",
+    path: "/{project_id}/v1/management/agents/{id}/logs/stream",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/management/api-keys
 pub const GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS: Operation = Operation {
@@ -868,7 +1308,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/api-keys",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/api-keys/{id}
 pub const GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID: Operation = Operation {
@@ -876,7 +1319,34 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/api-keys/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/management/endpoints
+pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS: Operation = Operation {
+    name: "get_project_id_v1_management_endpoints",
+    method: "GET",
+    path: "/{project_id}/v1/management/endpoints",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/endpoints/{id}
+pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID: Operation = Operation {
+    name: "get_project_id_v1_management_endpoints_id",
+    method: "GET",
+    path: "/{project_id}/v1/management/endpoints/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/endpoints/{id}/agents
+pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_AGENTS: Operation = Operation {
+    name: "get_project_id_v1_management_endpoints_id_agents",
+    method: "GET",
+    path: "/{project_id}/v1/management/endpoints/{id}/agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/management/endpoints/{id}/cors
 pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS: Operation = Operation {
@@ -884,7 +1354,58 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS: Operation = Operation 
     method: "GET",
     path: "/{project_id}/v1/management/endpoints/{id}/cors",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/endpoint-cors"],
+    sources: &[
+        "https://erebine.ai/docs/endpoint-cors",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/management/endpoints/{id}/health/check
+pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CHECK: Operation = Operation {
+    name: "get_project_id_v1_management_endpoints_id_health_check",
+    method: "GET",
+    path: "/{project_id}/v1/management/endpoints/{id}/health/check",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/endpoints/{id}/health/config
+pub const GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CONFIG: Operation = Operation {
+    name: "get_project_id_v1_management_endpoints_id_health_config",
+    method: "GET",
+    path: "/{project_id}/v1/management/endpoints/{id}/health/config",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/evolution/{id}
+pub const GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID: Operation = Operation {
+    name: "get_project_id_v1_management_evolution_id",
+    method: "GET",
+    path: "/{project_id}/v1/management/evolution/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/evolution/{id_1}/{lane}/runs/{id_2}
+pub const GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_1_LANE_RUNS_ID_2: Operation = Operation {
+    name: "get_project_id_v1_management_evolution_id_1_lane_runs_id_2",
+    method: "GET",
+    path: "/{project_id}/v1/management/evolution/{id_1}/{lane}/runs/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/evolution/{id}/{lane}/active
+pub const GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ACTIVE: Operation = Operation {
+    name: "get_project_id_v1_management_evolution_id_lane_active",
+    method: "GET",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/active",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/management/evolution/{id}/{lane}/history
+pub const GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_HISTORY: Operation = Operation {
+    name: "get_project_id_v1_management_evolution_id_lane_history",
+    method: "GET",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/history",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/management/join-keys
 pub const GET_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS: Operation = Operation {
@@ -892,7 +1413,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/join-keys",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/maintenance
 pub const GET_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE: Operation = Operation {
@@ -900,7 +1424,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/maintenance",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/project/invitations
 pub const GET_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS: Operation = Operation {
@@ -908,7 +1435,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS: Operation = Operatio
     method: "GET",
     path: "/{project_id}/v1/management/project/invitations",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/project/members
 pub const GET_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS: Operation = Operation {
@@ -916,7 +1446,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/project/members",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/semantic-router/config
 pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_CONFIG: Operation = Operation {
@@ -924,7 +1457,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_CONFIG: Operation = Opera
     method: "GET",
     path: "/{project_id}/v1/management/semantic-router/config",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/semantic-router/decisions
 pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_DECISIONS: Operation = Operation {
@@ -935,6 +1471,7 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_DECISIONS: Operation = Op
     sources: &[
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/authentication",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/management/semantic-router/health
@@ -946,6 +1483,7 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_HEALTH: Operation = Opera
     sources: &[
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/authentication",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/management/semantic-router/rules
@@ -954,7 +1492,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES: Operation = Operat
     method: "GET",
     path: "/{project_id}/v1/management/semantic-router/rules",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/management/tiers
 pub const GET_PROJECT_ID_V1_MANAGEMENT_TIERS: Operation = Operation {
@@ -962,7 +1503,10 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_TIERS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/management/tiers",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/mcp
 pub const GET_PROJECT_ID_V1_MCP: Operation = Operation {
@@ -1000,6 +1544,7 @@ pub const GET_PROJECT_ID_V1_MODELS: Operation = Operation {
         "https://erebine.ai/docs/model-sharing",
         "https://erebine.ai/docs/rerank",
         "https://erebine.ai/docs/systemone",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/models/{id}
@@ -1012,6 +1557,7 @@ pub const GET_PROJECT_ID_V1_MODELS_ID: Operation = Operation {
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/model-management",
         "https://erebine.ai/docs/model-sharing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/models/{id}/catalog-info
@@ -1020,7 +1566,10 @@ pub const GET_PROJECT_ID_V1_MODELS_ID_CATALOG_INFO: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/models/{id}/catalog-info",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/model-management"],
+    sources: &[
+        "https://erebine.ai/docs/model-management",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/models/{id}/hf-overrides
 pub const GET_PROJECT_ID_V1_MODELS_ID_HF_OVERRIDES: Operation = Operation {
@@ -1028,7 +1577,10 @@ pub const GET_PROJECT_ID_V1_MODELS_ID_HF_OVERRIDES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/models/{id}/hf-overrides",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/model-management"],
+    sources: &[
+        "https://erebine.ai/docs/model-management",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/models/{id}/versions
 pub const GET_PROJECT_ID_V1_MODELS_ID_VERSIONS: Operation = Operation {
@@ -1036,7 +1588,10 @@ pub const GET_PROJECT_ID_V1_MODELS_ID_VERSIONS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/models/{id}/versions",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/model-management"],
+    sources: &[
+        "https://erebine.ai/docs/model-management",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/project-members/search
 pub const GET_PROJECT_ID_V1_PROJECT_MEMBERS_SEARCH: Operation = Operation {
@@ -1044,7 +1599,18 @@ pub const GET_PROJECT_ID_V1_PROJECT_MEMBERS_SEARCH: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/project-members/search",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/settings/project
+pub const GET_PROJECT_ID_V1_SETTINGS_PROJECT: Operation = Operation {
+    name: "get_project_id_v1_settings_project",
+    method: "GET",
+    path: "/{project_id}/v1/settings/project",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/slos
 pub const GET_PROJECT_ID_V1_SLOS: Operation = Operation {
@@ -1052,7 +1618,10 @@ pub const GET_PROJECT_ID_V1_SLOS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/slos",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/slos/{id}
 pub const GET_PROJECT_ID_V1_SLOS_ID: Operation = Operation {
@@ -1060,7 +1629,10 @@ pub const GET_PROJECT_ID_V1_SLOS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/slos/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/slos/{id}/history
 pub const GET_PROJECT_ID_V1_SLOS_ID_HISTORY: Operation = Operation {
@@ -1068,7 +1640,10 @@ pub const GET_PROJECT_ID_V1_SLOS_ID_HISTORY: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/slos/{id}/history",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/slos/summary
 pub const GET_PROJECT_ID_V1_SLOS_SUMMARY: Operation = Operation {
@@ -1076,7 +1651,10 @@ pub const GET_PROJECT_ID_V1_SLOS_SUMMARY: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/slos/summary",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/uploads
 pub const GET_PROJECT_ID_V1_UPLOADS: Operation = Operation {
@@ -1087,6 +1665,7 @@ pub const GET_PROJECT_ID_V1_UPLOADS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/erectl/uploads",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/uploads/{id}
@@ -1095,7 +1674,10 @@ pub const GET_PROJECT_ID_V1_UPLOADS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/uploads/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/uploads"],
+    sources: &[
+        "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/usage/endpoints
 pub const GET_PROJECT_ID_V1_USAGE_ENDPOINTS: Operation = Operation {
@@ -1103,7 +1685,10 @@ pub const GET_PROJECT_ID_V1_USAGE_ENDPOINTS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/usage/endpoints",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/usage-billing"],
+    sources: &[
+        "https://erebine.ai/docs/usage-billing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/usage/events
 pub const GET_PROJECT_ID_V1_USAGE_EVENTS: Operation = Operation {
@@ -1111,7 +1696,10 @@ pub const GET_PROJECT_ID_V1_USAGE_EVENTS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/usage/events",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/usage-billing"],
+    sources: &[
+        "https://erebine.ai/docs/usage-billing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/usage/logs
 pub const GET_PROJECT_ID_V1_USAGE_LOGS: Operation = Operation {
@@ -1119,7 +1707,10 @@ pub const GET_PROJECT_ID_V1_USAGE_LOGS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/usage/logs",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/usage-billing"],
+    sources: &[
+        "https://erebine.ai/docs/usage-billing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/usage/uptime
 pub const GET_PROJECT_ID_V1_USAGE_UPTIME: Operation = Operation {
@@ -1127,7 +1718,18 @@ pub const GET_PROJECT_ID_V1_USAGE_UPTIME: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/usage/uptime",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/usage-billing"],
+    sources: &[
+        "https://erebine.ai/docs/usage-billing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// GET /{project_id}/v1/user/preferences
+pub const GET_PROJECT_ID_V1_USER_PREFERENCES: Operation = Operation {
+    name: "get_project_id_v1_user_preferences",
+    method: "GET",
+    path: "/{project_id}/v1/user/preferences",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/webhooks
 pub const GET_PROJECT_ID_V1_WEBHOOKS: Operation = Operation {
@@ -1135,7 +1737,10 @@ pub const GET_PROJECT_ID_V1_WEBHOOKS: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/webhooks",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/webhooks"],
+    sources: &[
+        "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/webhooks/{id}
 pub const GET_PROJECT_ID_V1_WEBHOOKS_ID: Operation = Operation {
@@ -1143,7 +1748,10 @@ pub const GET_PROJECT_ID_V1_WEBHOOKS_ID: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/webhooks/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/webhooks"],
+    sources: &[
+        "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/webhooks/{id}/deliveries
 pub const GET_PROJECT_ID_V1_WEBHOOKS_ID_DELIVERIES: Operation = Operation {
@@ -1154,6 +1762,7 @@ pub const GET_PROJECT_ID_V1_WEBHOOKS_ID_DELIVERIES: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/eem/webhooks",
         "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/workspaces
@@ -1162,7 +1771,10 @@ pub const GET_PROJECT_ID_V1_WORKSPACES: Operation = Operation {
     method: "GET",
     path: "/{project_id}/v1/workspaces",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/workspaces/{id}
 pub const GET_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
@@ -1174,6 +1786,7 @@ pub const GET_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
         "https://erebine.ai/docs/queueing",
         "https://erebine.ai/docs/zero-data-retention",
         "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// GET /{project_id}/v1/workspaces/{id_1}/files/{id_2}
@@ -1184,13 +1797,48 @@ pub const GET_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2: Operation = Operation {
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/document-workspace"],
 };
+/// GET /{project_id}/v1/workspaces/{id}/agents
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_AGENTS: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_agents",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/workspaces/{id}/auto-approvals
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_AUTO_APPROVALS: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_auto_approvals",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/auto-approvals",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/workspaces/{id}/chat-templates
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_CHAT_TEMPLATES: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_chat_templates",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/chat-templates",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// GET /{project_id}/v1/workspaces/{id}/decisions
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_DECISIONS: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_decisions",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/decisions",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// GET /{project_id}/v1/workspaces/{id}/files
 pub const GET_PROJECT_ID_V1_WORKSPACES_ID_FILES: Operation = Operation {
     name: "get_project_id_v1_workspaces_id_files",
     method: "GET",
     path: "/{project_id}/v1/workspaces/{id}/files",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// GET /{project_id}/v1/workspaces/{id}/graph
 pub const GET_PROJECT_ID_V1_WORKSPACES_ID_GRAPH: Operation = Operation {
@@ -1199,6 +1847,14 @@ pub const GET_PROJECT_ID_V1_WORKSPACES_ID_GRAPH: Operation = Operation {
     path: "/{project_id}/v1/workspaces/{id}/graph",
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/workspace-graph"],
+};
+/// GET /{project_id}/v1/workspaces/{id}/members
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_MEMBERS: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_members",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/members",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/v1/workspaces/{id}/memories
 pub const GET_PROJECT_ID_V1_WORKSPACES_ID_MEMORIES: Operation = Operation {
@@ -1209,7 +1865,16 @@ pub const GET_PROJECT_ID_V1_WORKSPACES_ID_MEMORIES: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/chat-memory",
         "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// GET /{project_id}/v1/workspaces/{id}/milestones
+pub const GET_PROJECT_ID_V1_WORKSPACES_ID_MILESTONES: Operation = Operation {
+    name: "get_project_id_v1_workspaces_id_milestones",
+    method: "GET",
+    path: "/{project_id}/v1/workspaces/{id}/milestones",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// GET /{project_id}/{workspace_id}/_direct/v1/models
 pub const GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_MODELS: Operation = Operation {
@@ -1331,13 +1996,88 @@ pub const PATCH_CHAT_API_WORKSPACES_ID_VISIBILITY: Operation = Operation {
     surface: Surface::Dashboard,
     sources: &["https://erebine.ai/docs/document-workspace"],
 };
+/// PATCH /{project_id}/v1/admin/anchors/{id}
+pub const PATCH_PROJECT_ID_V1_ADMIN_ANCHORS_ID: Operation = Operation {
+    name: "patch_project_id_v1_admin_anchors_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/admin/anchors/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/admin/maintenance/windows/{id}
+pub const PATCH_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID: Operation = Operation {
+    name: "patch_project_id_v1_admin_maintenance_windows_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/admin/maintenance/windows/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/admin/storage-tiers/{id}
+pub const PATCH_PROJECT_ID_V1_ADMIN_STORAGE_TIERS_ID: Operation = Operation {
+    name: "patch_project_id_v1_admin_storage_tiers_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/admin/storage-tiers/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/chat-templates/{id}
+pub const PATCH_PROJECT_ID_V1_CHAT_TEMPLATES_ID: Operation = Operation {
+    name: "patch_project_id_v1_chat_templates_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/chat-templates/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/chats/{id}
+pub const PATCH_PROJECT_ID_V1_CHATS_ID: Operation = Operation {
+    name: "patch_project_id_v1_chats_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/chats/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/chats/{id_1}/artifacts/{id_2}
+pub const PATCH_PROJECT_ID_V1_CHATS_ID_1_ARTIFACTS_ID_2: Operation = Operation {
+    name: "patch_project_id_v1_chats_id_1_artifacts_id_2",
+    method: "PATCH",
+    path: "/{project_id}/v1/chats/{id_1}/artifacts/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/chats/{id}/visibility
+pub const PATCH_PROJECT_ID_V1_CHATS_ID_VISIBILITY: Operation = Operation {
+    name: "patch_project_id_v1_chats_id_visibility",
+    method: "PATCH",
+    path: "/{project_id}/v1/chats/{id}/visibility",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// PATCH /{project_id}/v1/management/agents/{id}
 pub const PATCH_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID: Operation = Operation {
     name: "patch_project_id_v1_management_agents_id",
     method: "PATCH",
     path: "/{project_id}/v1/management/agents/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/private-agents"],
+    sources: &[
+        "https://erebine.ai/docs/private-agents",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// PATCH /{project_id}/v1/management/endpoints/{id}
+pub const PATCH_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID: Operation = Operation {
+    name: "patch_project_id_v1_management_endpoints_id",
+    method: "PATCH",
+    path: "/{project_id}/v1/management/endpoints/{id}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/management/endpoints/{id_1}/agents/{id_2}
+pub const PATCH_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_1_AGENTS_ID_2: Operation = Operation {
+    name: "patch_project_id_v1_management_endpoints_id_1_agents_id_2",
+    method: "PATCH",
+    path: "/{project_id}/v1/management/endpoints/{id_1}/agents/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// PATCH /{project_id}/v1/management/maintenance/{id}
 pub const PATCH_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID: Operation = Operation {
@@ -1345,7 +2085,10 @@ pub const PATCH_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID: Operation = Operation {
     method: "PATCH",
     path: "/{project_id}/v1/management/maintenance/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PATCH /{project_id}/v1/management/project/members/{id}
 pub const PATCH_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID: Operation = Operation {
@@ -1353,7 +2096,10 @@ pub const PATCH_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID: Operation = Operati
     method: "PATCH",
     path: "/{project_id}/v1/management/project/members/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PATCH /{project_id}/v1/management/semantic-router/config
 pub const PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_CONFIG: Operation = Operation {
@@ -1361,7 +2107,10 @@ pub const PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_CONFIG: Operation = Ope
     method: "PATCH",
     path: "/{project_id}/v1/management/semantic-router/config",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PATCH /{project_id}/v1/management/semantic-router/rules/{id}
 pub const PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID: Operation = Operation {
@@ -1369,7 +2118,10 @@ pub const PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID: Operation = O
     method: "PATCH",
     path: "/{project_id}/v1/management/semantic-router/rules/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PATCH /{project_id}/v1/models/{id}
 pub const PATCH_PROJECT_ID_V1_MODELS_ID: Operation = Operation {
@@ -1384,7 +2136,24 @@ pub const PATCH_PROJECT_ID_V1_MODELS_ID: Operation = Operation {
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/private-agents",
         "https://erebine.ai/docs/systemone",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// PATCH /{project_id}/v1/settings/project
+pub const PATCH_PROJECT_ID_V1_SETTINGS_PROJECT: Operation = Operation {
+    name: "patch_project_id_v1_settings_project",
+    method: "PATCH",
+    path: "/{project_id}/v1/settings/project",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/user/preferences
+pub const PATCH_PROJECT_ID_V1_USER_PREFERENCES: Operation = Operation {
+    name: "patch_project_id_v1_user_preferences",
+    method: "PATCH",
+    path: "/{project_id}/v1/user/preferences",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// PATCH /{project_id}/v1/workspaces/{id}
 pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
@@ -1392,7 +2161,18 @@ pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
     method: "PATCH",
     path: "/{project_id}/v1/workspaces/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// PATCH /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
+pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2: Operation = Operation {
+    name: "patch_project_id_v1_workspaces_id_1_decisions_id_2",
+    method: "PATCH",
+    path: "/{project_id}/v1/workspaces/{id_1}/decisions/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// PATCH /{project_id}/v1/workspaces/{id_1}/memories/{id_2}
 pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2: Operation = Operation {
@@ -1403,7 +2183,24 @@ pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2: Operation = Operati
     sources: &[
         "https://erebine.ai/docs/chat-memory",
         "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// PATCH /{project_id}/v1/workspaces/{id_1}/milestones/{id_2}
+pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MILESTONES_ID_2: Operation = Operation {
+    name: "patch_project_id_v1_workspaces_id_1_milestones_id_2",
+    method: "PATCH",
+    path: "/{project_id}/v1/workspaces/{id_1}/milestones/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PATCH /{project_id}/v1/workspaces/{id}/visibility
+pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_VISIBILITY: Operation = Operation {
+    name: "patch_project_id_v1_workspaces_id_visibility",
+    method: "PATCH",
+    path: "/{project_id}/v1/workspaces/{id}/visibility",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /account/api/invite
 pub const POST_ACCOUNT_API_INVITE: Operation = Operation {
@@ -1676,6 +2473,7 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS: Operation = Operati
         "https://erebine.ai/docs/audio",
         "https://erebine.ai/docs/slo-tracking",
         "https://erebine.ai/docs/streaming",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/chat/completions/{id}
@@ -1688,6 +2486,7 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID: Operation = Oper
         "https://erebine.ai/docs/completions",
         "https://erebine.ai/docs/sdk-integrations",
         "https://erebine.ai/docs/tool-calling",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/embeddings
@@ -1696,7 +2495,10 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_EMBEDDINGS: Operation = Operation {
     method: "POST",
     path: "/{project_id}/{endpoint_slug}/v1/embeddings",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/embeddings"],
+    sources: &[
+        "https://erebine.ai/docs/embeddings",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/rerank
 pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_RERANK: Operation = Operation {
@@ -1704,7 +2506,10 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_RERANK: Operation = Operation {
     method: "POST",
     path: "/{project_id}/{endpoint_slug}/v1/rerank",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/rerank"],
+    sources: &[
+        "https://erebine.ai/docs/rerank",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/responses
 pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES: Operation = Operation {
@@ -1715,6 +2520,7 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/responses",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/responses/{id}/cancel
@@ -1723,7 +2529,10 @@ pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_CANCEL: Operation = Oper
     method: "POST",
     path: "/{project_id}/{endpoint_slug}/v1/responses/{id}/cancel",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/responses"],
+    sources: &[
+        "https://erebine.ai/docs/responses",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/{endpoint_slug}/v1/score
 pub const POST_PROJECT_ID_ENDPOINT_SLUG_V1_SCORE: Operation = Operation {
@@ -1763,6 +2572,46 @@ pub const POST_PROJECT_ID_SEMANTIC_ROUTER_V1_CHAT_COMPLETIONS_MULTIMODEL: Operat
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/api-reference"],
 };
+/// POST /{project_id}/v1/admin/cache/clear
+pub const POST_PROJECT_ID_V1_ADMIN_CACHE_CLEAR: Operation = Operation {
+    name: "post_project_id_v1_admin_cache_clear",
+    method: "POST",
+    path: "/{project_id}/v1/admin/cache/clear",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/admin/maintenance/windows
+pub const POST_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS: Operation = Operation {
+    name: "post_project_id_v1_admin_maintenance_windows",
+    method: "POST",
+    path: "/{project_id}/v1/admin/maintenance/windows",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/admin/private-agents/{id}/attach-project
+pub const POST_PROJECT_ID_V1_ADMIN_PRIVATE_AGENTS_ID_ATTACH_PROJECT: Operation = Operation {
+    name: "post_project_id_v1_admin_private_agents_id_attach_project",
+    method: "POST",
+    path: "/{project_id}/v1/admin/private-agents/{id}/attach-project",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/admin/storage-tiers
+pub const POST_PROJECT_ID_V1_ADMIN_STORAGE_TIERS: Operation = Operation {
+    name: "post_project_id_v1_admin_storage_tiers",
+    method: "POST",
+    path: "/{project_id}/v1/admin/storage-tiers",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/admin/tasks/{id}/cancel
+pub const POST_PROJECT_ID_V1_ADMIN_TASKS_ID_CANCEL: Operation = Operation {
+    name: "post_project_id_v1_admin_tasks_id_cancel",
+    method: "POST",
+    path: "/{project_id}/v1/admin/tasks/{id}/cancel",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// POST /{project_id}/v1/batches
 pub const POST_PROJECT_ID_V1_BATCHES: Operation = Operation {
     name: "post_project_id_v1_batches",
@@ -1777,7 +2626,34 @@ pub const POST_PROJECT_ID_V1_BATCHES_ID_CANCEL: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/batches/{id}/cancel",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/batch"],
+    sources: &[
+        "https://erebine.ai/docs/batch",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// POST /{project_id}/v1/chat-templates
+pub const POST_PROJECT_ID_V1_CHAT_TEMPLATES: Operation = Operation {
+    name: "post_project_id_v1_chat_templates",
+    method: "POST",
+    path: "/{project_id}/v1/chat-templates",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/chat-templates/{id}/promote
+pub const POST_PROJECT_ID_V1_CHAT_TEMPLATES_ID_PROMOTE: Operation = Operation {
+    name: "post_project_id_v1_chat_templates_id_promote",
+    method: "POST",
+    path: "/{project_id}/v1/chat-templates/{id}/promote",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/chats
+pub const POST_PROJECT_ID_V1_CHATS: Operation = Operation {
+    name: "post_project_id_v1_chats",
+    method: "POST",
+    path: "/{project_id}/v1/chats",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/chats/{id}/auto_fork
 pub const POST_PROJECT_ID_V1_CHATS_ID_AUTO_FORK: Operation = Operation {
@@ -1793,7 +2669,10 @@ pub const POST_PROJECT_ID_V1_CHATS_ID_BRANCHES: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/chats/{id}/branches",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/chat-branching"],
+    sources: &[
+        "https://erebine.ai/docs/chat-branching",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/conversations
 pub const POST_PROJECT_ID_V1_CONVERSATIONS: Operation = Operation {
@@ -1804,6 +2683,7 @@ pub const POST_PROJECT_ID_V1_CONVERSATIONS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/conversations/{id}
@@ -1815,6 +2695,7 @@ pub const POST_PROJECT_ID_V1_CONVERSATIONS_ID: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/conversations/{id}/items
@@ -1827,6 +2708,7 @@ pub const POST_PROJECT_ID_V1_CONVERSATIONS_ID_ITEMS: Operation = Operation {
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/conversations",
         "https://erebine.ai/docs/erectl/conversations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/exec/approvals/{id}/approve
@@ -1838,6 +2720,7 @@ pub const POST_PROJECT_ID_V1_EXEC_APPROVALS_ID_APPROVE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/eem/approvals",
         "https://erebine.ai/docs/eem/tutorials",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/exec/approvals/{id}/reject
@@ -1846,7 +2729,10 @@ pub const POST_PROJECT_ID_V1_EXEC_APPROVALS_ID_REJECT: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/exec/approvals/{id}/reject",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem/approvals"],
+    sources: &[
+        "https://erebine.ai/docs/eem/approvals",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/exec/invocations
 pub const POST_PROJECT_ID_V1_EXEC_INVOCATIONS: Operation = Operation {
@@ -1857,6 +2743,7 @@ pub const POST_PROJECT_ID_V1_EXEC_INVOCATIONS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/eem",
         "https://erebine.ai/docs/eem/glossary",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/exec/invocations/{id}/cancel
@@ -1865,7 +2752,10 @@ pub const POST_PROJECT_ID_V1_EXEC_INVOCATIONS_ID_CANCEL: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/exec/invocations/{id}/cancel",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/eem/approvals"],
+    sources: &[
+        "https://erebine.ai/docs/eem/approvals",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/exports/executions
 pub const POST_PROJECT_ID_V1_EXPORTS_EXECUTIONS: Operation = Operation {
@@ -1881,7 +2771,10 @@ pub const POST_PROJECT_ID_V1_EXPORTS_LOGS: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/exports/logs",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/data-export"],
+    sources: &[
+        "https://erebine.ai/docs/data-export",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/exports/metrics
 pub const POST_PROJECT_ID_V1_EXPORTS_METRICS: Operation = Operation {
@@ -1908,6 +2801,7 @@ pub const POST_PROJECT_ID_V1_FILES: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/api-reference",
         "https://erebine.ai/docs/files",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/internal/research
@@ -1917,6 +2811,22 @@ pub const POST_PROJECT_ID_V1_INTERNAL_RESEARCH: Operation = Operation {
     path: "/{project_id}/v1/internal/research",
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/eem"],
+};
+/// POST /{project_id}/v1/management/agents
+pub const POST_PROJECT_ID_V1_MANAGEMENT_AGENTS: Operation = Operation {
+    name: "post_project_id_v1_management_agents",
+    method: "POST",
+    path: "/{project_id}/v1/management/agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/agents/{id}/curve-rotate
+pub const POST_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_CURVE_ROTATE: Operation = Operation {
+    name: "post_project_id_v1_management_agents_id_curve_rotate",
+    method: "POST",
+    path: "/{project_id}/v1/management/agents/{id}/curve-rotate",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/management/api-keys
 pub const POST_PROJECT_ID_V1_MANAGEMENT_API_KEYS: Operation = Operation {
@@ -1928,6 +2838,7 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_API_KEYS: Operation = Operation {
         "https://erebine.ai/docs/authentication",
         "https://erebine.ai/docs/erectl/keys",
         "https://erebine.ai/docs/sdk-integrations",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/management/api-keys/{id}/rotate
@@ -1936,7 +2847,75 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_ROTATE: Operation = Operatio
     method: "POST",
     path: "/{project_id}/v1/management/api-keys/{id}/rotate",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// POST /{project_id}/v1/management/endpoints
+pub const POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS: Operation = Operation {
+    name: "post_project_id_v1_management_endpoints",
+    method: "POST",
+    path: "/{project_id}/v1/management/endpoints",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/endpoints/{id}/agents
+pub const POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_AGENTS: Operation = Operation {
+    name: "post_project_id_v1_management_endpoints_id_agents",
+    method: "POST",
+    path: "/{project_id}/v1/management/endpoints/{id}/agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/endpoints/{id}/provision
+pub const POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_PROVISION: Operation = Operation {
+    name: "post_project_id_v1_management_endpoints_id_provision",
+    method: "POST",
+    path: "/{project_id}/v1/management/endpoints/{id}/provision",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/endpoints/{id}/regenerate-capabilities
+pub const POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_REGENERATE_CAPABILITIES: Operation =
+    Operation {
+        name: "post_project_id_v1_management_endpoints_id_regenerate_capabilities",
+        method: "POST",
+        path: "/{project_id}/v1/management/endpoints/{id}/regenerate-capabilities",
+        surface: Surface::Router,
+        sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+    };
+/// POST /{project_id}/v1/management/endpoints/{id}/unprovision
+pub const POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_UNPROVISION: Operation = Operation {
+    name: "post_project_id_v1_management_endpoints_id_unprovision",
+    method: "POST",
+    path: "/{project_id}/v1/management/endpoints/{id}/unprovision",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/evolution/{id}/{lane}/breaker/reset
+pub const POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_BREAKER_RESET: Operation = Operation {
+    name: "post_project_id_v1_management_evolution_id_lane_breaker_reset",
+    method: "POST",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/breaker/reset",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/evolution/{id}/{lane}/rollback
+pub const POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ROLLBACK: Operation = Operation {
+    name: "post_project_id_v1_management_evolution_id_lane_rollback",
+    method: "POST",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/rollback",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/management/evolution/{id}/{lane}/run
+pub const POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_RUN: Operation = Operation {
+    name: "post_project_id_v1_management_evolution_id_lane_run",
+    method: "POST",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/run",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/management/join-keys
 pub const POST_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS: Operation = Operation {
@@ -1952,7 +2931,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/management/maintenance",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/maintenance/{id}/complete
 pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID_COMPLETE: Operation = Operation {
@@ -1960,7 +2942,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID_COMPLETE: Operation = Ope
     method: "POST",
     path: "/{project_id}/v1/management/maintenance/{id}/complete",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/maintenance/{id}/purge
 pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID_PURGE: Operation = Operation {
@@ -1968,7 +2953,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID_PURGE: Operation = Operat
     method: "POST",
     path: "/{project_id}/v1/management/maintenance/{id}/purge",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/status-maintenance"],
+    sources: &[
+        "https://erebine.ai/docs/status-maintenance",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/project/invitations/{id}/resend
 pub const POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID_RESEND: Operation = Operation {
@@ -1976,7 +2964,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID_RESEND: Operation
     method: "POST",
     path: "/{project_id}/v1/management/project/invitations/{id}/resend",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/project/members
 pub const POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS: Operation = Operation {
@@ -1984,7 +2975,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/management/project/members",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/teams"],
+    sources: &[
+        "https://erebine.ai/docs/teams",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/management/semantic-router/rules
 pub const POST_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES: Operation = Operation {
@@ -1992,7 +2986,10 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES: Operation = Opera
     method: "POST",
     path: "/{project_id}/v1/management/semantic-router/rules",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/api-reference"],
+    sources: &[
+        "https://erebine.ai/docs/api-reference",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/mcp
 pub const POST_PROJECT_ID_V1_MCP: Operation = Operation {
@@ -2022,6 +3019,7 @@ pub const POST_PROJECT_ID_V1_MODELS_ID_REVALIDATE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-management",
         "https://erebine.ai/docs/model-versioning",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/models/{id}/share
@@ -2033,6 +3031,7 @@ pub const POST_PROJECT_ID_V1_MODELS_ID_SHARE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-management",
         "https://erebine.ai/docs/model-sharing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/models/{id}/unshare
@@ -2044,6 +3043,7 @@ pub const POST_PROJECT_ID_V1_MODELS_ID_UNSHARE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-management",
         "https://erebine.ai/docs/model-sharing",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/models/{id}/versions
@@ -2052,7 +3052,26 @@ pub const POST_PROJECT_ID_V1_MODELS_ID_VERSIONS: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/models/{id}/versions",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/model-management"],
+    sources: &[
+        "https://erebine.ai/docs/model-management",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// POST /{project_id}/v1/models/{id}/versions/1.0.0/promote
+pub const POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_1_0_0_PROMOTE: Operation = Operation {
+    name: "post_project_id_v1_models_id_versions_1_0_0_promote",
+    method: "POST",
+    path: "/{project_id}/v1/models/{id}/versions/1.0.0/promote",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/models/{id}/versions/1.0.0/rollback
+pub const POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_1_0_0_ROLLBACK: Operation = Operation {
+    name: "post_project_id_v1_models_id_versions_1_0_0_rollback",
+    method: "POST",
+    path: "/{project_id}/v1/models/{id}/versions/1.0.0/rollback",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/models/{id}/versions/{version}/promote
 pub const POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_VERSION_PROMOTE: Operation = Operation {
@@ -2087,7 +3106,10 @@ pub const POST_PROJECT_ID_V1_SLOS_ID_CALCULATE: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/slos/{id}/calculate",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/slo-tracking"],
+    sources: &[
+        "https://erebine.ai/docs/slo-tracking",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/uploads
 pub const POST_PROJECT_ID_V1_UPLOADS: Operation = Operation {
@@ -2106,6 +3128,7 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ARCHIVE: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/model-upload",
         "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/uploads/directory
@@ -2125,7 +3148,10 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_CANCEL: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/uploads/{id}/cancel",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/uploads"],
+    sources: &[
+        "https://erebine.ai/docs/uploads",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/uploads/{id}/complete
 pub const POST_PROJECT_ID_V1_UPLOADS_ID_COMPLETE: Operation = Operation {
@@ -2193,6 +3219,14 @@ pub const POST_PROJECT_ID_V1_UPLOADS_ID_RESUME: Operation = Operation {
         "https://erebine.ai/docs/uploads",
     ],
 };
+/// POST /{project_id}/v1/uploads/preflight
+pub const POST_PROJECT_ID_V1_UPLOADS_PREFLIGHT: Operation = Operation {
+    name: "post_project_id_v1_uploads_preflight",
+    method: "POST",
+    path: "/{project_id}/v1/uploads/preflight",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// POST /{project_id}/v1/webhooks
 pub const POST_PROJECT_ID_V1_WEBHOOKS: Operation = Operation {
     name: "post_project_id_v1_webhooks",
@@ -2202,6 +3236,7 @@ pub const POST_PROJECT_ID_V1_WEBHOOKS: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/eem/webhooks",
         "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
 /// POST /{project_id}/v1/webhooks/{id}/test
@@ -2210,7 +3245,10 @@ pub const POST_PROJECT_ID_V1_WEBHOOKS_ID_TEST: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/webhooks/{id}/test",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/webhooks"],
+    sources: &[
+        "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/v1/workspaces
 pub const POST_PROJECT_ID_V1_WORKSPACES: Operation = Operation {
@@ -2218,7 +3256,58 @@ pub const POST_PROJECT_ID_V1_WORKSPACES: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/workspaces",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// POST /{project_id}/v1/workspaces/{id_1}/agents/{id_2}/pause
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2_PAUSE: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_1_agents_id_2_pause",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id_1}/agents/{id_2}/pause",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/workspaces/{id_1}/agents/{id_2}/resume
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2_RESUME: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_1_agents_id_2_resume",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id_1}/agents/{id_2}/resume",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}/apply
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2_APPLY: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_1_chat_templates_id_2_apply",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}/apply",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/workspaces/{id}/agents
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_AGENTS: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_agents",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id}/agents",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/workspaces/{id}/auto-approvals
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_AUTO_APPROVALS: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_auto_approvals",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id}/auto-approvals",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// POST /{project_id}/v1/workspaces/{id}/chat-templates
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_CHAT_TEMPLATES: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_chat_templates",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id}/chat-templates",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/workspaces/{id}/files
 pub const POST_PROJECT_ID_V1_WORKSPACES_ID_FILES: Operation = Operation {
@@ -2237,7 +3326,16 @@ pub const POST_PROJECT_ID_V1_WORKSPACES_ID_MEMORIES: Operation = Operation {
     sources: &[
         "https://erebine.ai/docs/chat-memory",
         "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
+};
+/// POST /{project_id}/v1/workspaces/{id}/revalidate-intelligence
+pub const POST_PROJECT_ID_V1_WORKSPACES_ID_REVALIDATE_INTELLIGENCE: Operation = Operation {
+    name: "post_project_id_v1_workspaces_id_revalidate_intelligence",
+    method: "POST",
+    path: "/{project_id}/v1/workspaces/{id}/revalidate-intelligence",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// POST /{project_id}/v1/workspaces/{id}/search
 pub const POST_PROJECT_ID_V1_WORKSPACES_ID_SEARCH: Operation = Operation {
@@ -2245,7 +3343,10 @@ pub const POST_PROJECT_ID_V1_WORKSPACES_ID_SEARCH: Operation = Operation {
     method: "POST",
     path: "/{project_id}/v1/workspaces/{id}/search",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/document-workspace"],
+    sources: &[
+        "https://erebine.ai/docs/document-workspace",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// POST /{project_id}/{workspace_id}/_direct/v1/audio/speech
 pub const POST_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_AUDIO_SPEECH: Operation = Operation {
@@ -2368,13 +3469,24 @@ pub const PUT_BILLING_BUDGETS_ID: Operation = Operation {
     surface: Surface::Dashboard,
     sources: &["https://erebine.ai/docs/budget-alerts"],
 };
+/// PUT /{project_id}/v1/chats/{id}/exec-workspace
+pub const PUT_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE: Operation = Operation {
+    name: "put_project_id_v1_chats_id_exec_workspace",
+    method: "PUT",
+    path: "/{project_id}/v1/chats/{id}/exec-workspace",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
 /// PUT /{project_id}/v1/management/api-keys/{id}/ip-filter
 pub const PUT_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_IP_FILTER: Operation = Operation {
     name: "put_project_id_v1_management_api_keys_id_ip_filter",
     method: "PUT",
     path: "/{project_id}/v1/management/api-keys/{id}/ip-filter",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PUT /{project_id}/v1/management/api-keys/{id}/quota
 pub const PUT_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_QUOTA: Operation = Operation {
@@ -2382,7 +3494,10 @@ pub const PUT_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_QUOTA: Operation = Operation 
     method: "PUT",
     path: "/{project_id}/v1/management/api-keys/{id}/quota",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/erectl/keys"],
+    sources: &[
+        "https://erebine.ai/docs/erectl/keys",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 /// PUT /{project_id}/v1/management/endpoints/{id}/cors
 pub const PUT_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS: Operation = Operation {
@@ -2390,7 +3505,26 @@ pub const PUT_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS: Operation = Operation 
     method: "PUT",
     path: "/{project_id}/v1/management/endpoints/{id}/cors",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/endpoint-cors"],
+    sources: &[
+        "https://erebine.ai/docs/endpoint-cors",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
+};
+/// PUT /{project_id}/v1/management/endpoints/{id}/health/config
+pub const PUT_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CONFIG: Operation = Operation {
+    name: "put_project_id_v1_management_endpoints_id_health_config",
+    method: "PUT",
+    path: "/{project_id}/v1/management/endpoints/{id}/health/config",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
+};
+/// PUT /{project_id}/v1/management/evolution/{id}/{lane}/enable
+pub const PUT_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ENABLE: Operation = Operation {
+    name: "put_project_id_v1_management_evolution_id_lane_enable",
+    method: "PUT",
+    path: "/{project_id}/v1/management/evolution/{id}/{lane}/enable",
+    surface: Surface::Router,
+    sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
 /// PUT /{project_id}/v1/slos/{id}
 pub const PUT_PROJECT_ID_V1_SLOS_ID: Operation = Operation {
@@ -2406,7 +3540,10 @@ pub const PUT_PROJECT_ID_V1_WEBHOOKS_ID: Operation = Operation {
     method: "PUT",
     path: "/{project_id}/v1/webhooks/{id}",
     surface: Surface::Router,
-    sources: &["https://erebine.ai/docs/webhooks"],
+    sources: &[
+        "https://erebine.ai/docs/webhooks",
+        "https://github.com/erebine/binaries/releases/tag/v2.7.3",
+    ],
 };
 pub const ALL: &[Operation] = &[
     DELETE_BILLING_BUDGETS_ID,
@@ -2422,7 +3559,14 @@ pub const ALL: &[Operation] = &[
     DELETE_GDPR_EXPORT_ID,
     DELETE_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID,
     DELETE_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID,
+    DELETE_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID,
+    DELETE_PROJECT_ID_V1_ADMIN_STORAGE_TIERS_ID,
+    DELETE_PROJECT_ID_V1_CHAT_TEMPLATES_ID,
+    DELETE_PROJECT_ID_V1_CHATS_ID,
+    DELETE_PROJECT_ID_V1_CHATS_ID_1_ARTIFACTS_ID_2,
     DELETE_PROJECT_ID_V1_CHATS_ID_1_BRANCHES_ID_2,
+    DELETE_PROJECT_ID_V1_CHATS_ID_1_MEMBERS_ID_2,
+    DELETE_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE,
     DELETE_PROJECT_ID_V1_CONVERSATIONS_ID,
     DELETE_PROJECT_ID_V1_CONVERSATIONS_ID_1_ITEMS_ID_2,
     DELETE_PROJECT_ID_V1_EXPORTS_ID,
@@ -2430,6 +3574,7 @@ pub const ALL: &[Operation] = &[
     DELETE_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID,
+    DELETE_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_1_AGENTS_ID_2,
     DELETE_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID,
@@ -2437,12 +3582,18 @@ pub const ALL: &[Operation] = &[
     DELETE_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID,
     DELETE_PROJECT_ID_V1_MCP,
     DELETE_PROJECT_ID_V1_MODELS_ID,
+    DELETE_PROJECT_ID_V1_SETTINGS_PROJECT,
     DELETE_PROJECT_ID_V1_SLOS_ID,
     DELETE_PROJECT_ID_V1_UPLOADS_ID,
     DELETE_PROJECT_ID_V1_WEBHOOKS_ID,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AUTO_APPROVALS_ID_2,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMBERS_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MILESTONES_ID_2,
     DELETE_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_RESPONSES_ID,
     GET_ACCOUNT_API_INVITE,
     GET_BILLING,
@@ -2482,10 +3633,33 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_INPUT_ITEMS,
+    GET_PROJECT_ID_V1_ADMIN_ANCHORS,
+    GET_PROJECT_ID_V1_ADMIN_ANCHORS_ID,
+    GET_PROJECT_ID_V1_ADMIN_CACHE_KEYS,
+    GET_PROJECT_ID_V1_ADMIN_CACHE_STATS,
+    GET_PROJECT_ID_V1_ADMIN_CONSUMPTION,
+    GET_PROJECT_ID_V1_ADMIN_HEALTH,
+    GET_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS,
+    GET_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID,
+    GET_PROJECT_ID_V1_ADMIN_PRIVATE_AGENTS,
+    GET_PROJECT_ID_V1_ADMIN_PROJECT_ENDPOINTS,
+    GET_PROJECT_ID_V1_ADMIN_STORAGE_DASHBOARD,
+    GET_PROJECT_ID_V1_ADMIN_STORAGE_TIERS,
+    GET_PROJECT_ID_V1_ADMIN_USERS,
     GET_PROJECT_ID_V1_BATCHES,
     GET_PROJECT_ID_V1_BATCHES_ID,
     GET_PROJECT_ID_V1_CHAT_TEMPLATES,
+    GET_PROJECT_ID_V1_CHAT_TEMPLATES_ID,
+    GET_PROJECT_ID_V1_CHAT_TEMPLATES_ID_VERSIONS,
+    GET_PROJECT_ID_V1_CHATS,
+    GET_PROJECT_ID_V1_CHATS_ID,
+    GET_PROJECT_ID_V1_CHATS_ID_ARTIFACTS,
     GET_PROJECT_ID_V1_CHATS_ID_BRANCHES,
+    GET_PROJECT_ID_V1_CHATS_ID_CONTEXT,
+    GET_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE,
+    GET_PROJECT_ID_V1_CHATS_ID_MEMBERS,
+    GET_PROJECT_ID_V1_CHATS_ID_MEMORIES,
+    GET_PROJECT_ID_V1_CHATS_ID_MESSAGES,
     GET_PROJECT_ID_V1_CONVERSATIONS,
     GET_PROJECT_ID_V1_CONVERSATIONS_ID,
     GET_PROJECT_ID_V1_CONVERSATIONS_ID_1_ITEMS_ID_2,
@@ -2496,7 +3670,10 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_V1_EXEC_APPROVALS,
     GET_PROJECT_ID_V1_EXEC_APPROVALS_ID,
     GET_PROJECT_ID_V1_EXEC_APPROVALS_STREAM,
+    GET_PROJECT_ID_V1_EXEC_INVOCATIONS,
     GET_PROJECT_ID_V1_EXEC_INVOCATIONS_ID,
+    GET_PROJECT_ID_V1_EXEC_LEARNINGS,
+    GET_PROJECT_ID_V1_EXEC_LEARNINGS_ID,
     GET_PROJECT_ID_V1_EXEC_TOOLS,
     GET_PROJECT_ID_V1_EXEC_TOOLS_ID,
     GET_PROJECT_ID_V1_EXPORTS,
@@ -2509,9 +3686,19 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_V1_MANAGEMENT_AGENTS,
     GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID,
     GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_EVENTS,
+    GET_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_LOGS_STREAM,
     GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS,
     GET_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID,
+    GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS,
+    GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID,
+    GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_AGENTS,
     GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS,
+    GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CHECK,
+    GET_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CONFIG,
+    GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID,
+    GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_1_LANE_RUNS_ID_2,
+    GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ACTIVE,
+    GET_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_HISTORY,
     GET_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS,
     GET_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE,
     GET_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS,
@@ -2529,6 +3716,7 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_V1_MODELS_ID_HF_OVERRIDES,
     GET_PROJECT_ID_V1_MODELS_ID_VERSIONS,
     GET_PROJECT_ID_V1_PROJECT_MEMBERS_SEARCH,
+    GET_PROJECT_ID_V1_SETTINGS_PROJECT,
     GET_PROJECT_ID_V1_SLOS,
     GET_PROJECT_ID_V1_SLOS_ID,
     GET_PROJECT_ID_V1_SLOS_ID_HISTORY,
@@ -2539,15 +3727,22 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_V1_USAGE_EVENTS,
     GET_PROJECT_ID_V1_USAGE_LOGS,
     GET_PROJECT_ID_V1_USAGE_UPTIME,
+    GET_PROJECT_ID_V1_USER_PREFERENCES,
     GET_PROJECT_ID_V1_WEBHOOKS,
     GET_PROJECT_ID_V1_WEBHOOKS_ID,
     GET_PROJECT_ID_V1_WEBHOOKS_ID_DELIVERIES,
     GET_PROJECT_ID_V1_WORKSPACES,
     GET_PROJECT_ID_V1_WORKSPACES_ID,
     GET_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_AGENTS,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_AUTO_APPROVALS,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_CHAT_TEMPLATES,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_DECISIONS,
     GET_PROJECT_ID_V1_WORKSPACES_ID_FILES,
     GET_PROJECT_ID_V1_WORKSPACES_ID_GRAPH,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_MEMBERS,
     GET_PROJECT_ID_V1_WORKSPACES_ID_MEMORIES,
+    GET_PROJECT_ID_V1_WORKSPACES_ID_MILESTONES,
     GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_MODELS,
     GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_MODELS_ID,
     GET_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_PROVIDER_MANIFEST,
@@ -2562,14 +3757,28 @@ pub const ALL: &[Operation] = &[
     PATCH_CHAT_API_WORKSPACES_ID_1_MILESTONES_ID_2,
     PATCH_CHAT_API_WORKSPACES_ID_PREFERENCES,
     PATCH_CHAT_API_WORKSPACES_ID_VISIBILITY,
+    PATCH_PROJECT_ID_V1_ADMIN_ANCHORS_ID,
+    PATCH_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS_ID,
+    PATCH_PROJECT_ID_V1_ADMIN_STORAGE_TIERS_ID,
+    PATCH_PROJECT_ID_V1_CHAT_TEMPLATES_ID,
+    PATCH_PROJECT_ID_V1_CHATS_ID,
+    PATCH_PROJECT_ID_V1_CHATS_ID_1_ARTIFACTS_ID_2,
+    PATCH_PROJECT_ID_V1_CHATS_ID_VISIBILITY,
     PATCH_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID,
+    PATCH_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID,
+    PATCH_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_1_AGENTS_ID_2,
     PATCH_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID,
     PATCH_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID,
     PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_CONFIG,
     PATCH_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID,
     PATCH_PROJECT_ID_V1_MODELS_ID,
+    PATCH_PROJECT_ID_V1_SETTINGS_PROJECT,
+    PATCH_PROJECT_ID_V1_USER_PREFERENCES,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID,
+    PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2,
+    PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MILESTONES_ID_2,
+    PATCH_PROJECT_ID_V1_WORKSPACES_ID_VISIBILITY,
     POST_ACCOUNT_API_INVITE,
     POST_AGENTS_ID_DISABLE,
     POST_AGENTS_ID_ENABLE,
@@ -2611,8 +3820,16 @@ pub const ALL: &[Operation] = &[
     POST_PROJECT_ID_ENDPOINT_SLUG_V1_SYSTEMONE,
     POST_PROJECT_ID_SEMANTIC_ROUTER_V1_CHAT_COMPLETIONS,
     POST_PROJECT_ID_SEMANTIC_ROUTER_V1_CHAT_COMPLETIONS_MULTIMODEL,
+    POST_PROJECT_ID_V1_ADMIN_CACHE_CLEAR,
+    POST_PROJECT_ID_V1_ADMIN_MAINTENANCE_WINDOWS,
+    POST_PROJECT_ID_V1_ADMIN_PRIVATE_AGENTS_ID_ATTACH_PROJECT,
+    POST_PROJECT_ID_V1_ADMIN_STORAGE_TIERS,
+    POST_PROJECT_ID_V1_ADMIN_TASKS_ID_CANCEL,
     POST_PROJECT_ID_V1_BATCHES,
     POST_PROJECT_ID_V1_BATCHES_ID_CANCEL,
+    POST_PROJECT_ID_V1_CHAT_TEMPLATES,
+    POST_PROJECT_ID_V1_CHAT_TEMPLATES_ID_PROMOTE,
+    POST_PROJECT_ID_V1_CHATS,
     POST_PROJECT_ID_V1_CHATS_ID_AUTO_FORK,
     POST_PROJECT_ID_V1_CHATS_ID_BRANCHES,
     POST_PROJECT_ID_V1_CONVERSATIONS,
@@ -2628,8 +3845,18 @@ pub const ALL: &[Operation] = &[
     POST_PROJECT_ID_V1_EXPORTS_USAGE,
     POST_PROJECT_ID_V1_FILES,
     POST_PROJECT_ID_V1_INTERNAL_RESEARCH,
+    POST_PROJECT_ID_V1_MANAGEMENT_AGENTS,
+    POST_PROJECT_ID_V1_MANAGEMENT_AGENTS_ID_CURVE_ROTATE,
     POST_PROJECT_ID_V1_MANAGEMENT_API_KEYS,
     POST_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_ROTATE,
+    POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS,
+    POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_AGENTS,
+    POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_PROVISION,
+    POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_REGENERATE_CAPABILITIES,
+    POST_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_UNPROVISION,
+    POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_BREAKER_RESET,
+    POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ROLLBACK,
+    POST_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_RUN,
     POST_PROJECT_ID_V1_MANAGEMENT_JOIN_KEYS,
     POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE,
     POST_PROJECT_ID_V1_MANAGEMENT_MAINTENANCE_ID_COMPLETE,
@@ -2643,6 +3870,8 @@ pub const ALL: &[Operation] = &[
     POST_PROJECT_ID_V1_MODELS_ID_SHARE,
     POST_PROJECT_ID_V1_MODELS_ID_UNSHARE,
     POST_PROJECT_ID_V1_MODELS_ID_VERSIONS,
+    POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_1_0_0_PROMOTE,
+    POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_1_0_0_ROLLBACK,
     POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_VERSION_PROMOTE,
     POST_PROJECT_ID_V1_MODELS_ID_VERSIONS_VERSION_ROLLBACK,
     POST_PROJECT_ID_V1_SLOS,
@@ -2657,11 +3886,19 @@ pub const ALL: &[Operation] = &[
     POST_PROJECT_ID_V1_UPLOADS_ID_FILES_RELATIVE_PATH,
     POST_PROJECT_ID_V1_UPLOADS_ID_PARTS,
     POST_PROJECT_ID_V1_UPLOADS_ID_RESUME,
+    POST_PROJECT_ID_V1_UPLOADS_PREFLIGHT,
     POST_PROJECT_ID_V1_WEBHOOKS,
     POST_PROJECT_ID_V1_WEBHOOKS_ID_TEST,
     POST_PROJECT_ID_V1_WORKSPACES,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2_PAUSE,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2_RESUME,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2_APPLY,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_AGENTS,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_AUTO_APPROVALS,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_CHAT_TEMPLATES,
     POST_PROJECT_ID_V1_WORKSPACES_ID_FILES,
     POST_PROJECT_ID_V1_WORKSPACES_ID_MEMORIES,
+    POST_PROJECT_ID_V1_WORKSPACES_ID_REVALIDATE_INTELLIGENCE,
     POST_PROJECT_ID_V1_WORKSPACES_ID_SEARCH,
     POST_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_AUDIO_SPEECH,
     POST_PROJECT_ID_WORKSPACE_ID_DIRECT_V1_AUDIO_TRANSCRIPTIONS,
@@ -2677,9 +3914,12 @@ pub const ALL: &[Operation] = &[
     POST_V1_ENROLL,
     POST_V1_ENROLL_REFRESH,
     PUT_BILLING_BUDGETS_ID,
+    PUT_PROJECT_ID_V1_CHATS_ID_EXEC_WORKSPACE,
     PUT_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_IP_FILTER,
     PUT_PROJECT_ID_V1_MANAGEMENT_API_KEYS_ID_QUOTA,
     PUT_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_CORS,
+    PUT_PROJECT_ID_V1_MANAGEMENT_ENDPOINTS_ID_HEALTH_CONFIG,
+    PUT_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ENABLE,
     PUT_PROJECT_ID_V1_SLOS_ID,
     PUT_PROJECT_ID_V1_WEBHOOKS_ID,
 ];

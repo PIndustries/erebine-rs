@@ -507,3 +507,75 @@ async fn native_realtime_transcription_websocket() {
     );
     session.close().await.unwrap();
 }
+
+#[tokio::test]
+async fn official_cli_contracts_replay_through_native_transport() {
+    let evidence: Value = serde_json::from_str(include_str!("../api/cli-contracts.json")).unwrap();
+    let fixtures = evidence["requests"].as_array().unwrap();
+    assert_eq!(fixtures.len(), 271);
+    let f = Fixture::start();
+    let client = f.client().header("x-fixture-echo", "1").unwrap();
+    for fixture in fixtures {
+        let name = fixture["operation"].as_str().unwrap();
+        let operation = *operations::ALL
+            .iter()
+            .find(|o| o.name == name)
+            .expect("fixture operation missing");
+        let mut request = client.operation(operation);
+        for (name, value) in fixture["parameters"].as_object().unwrap() {
+            request = request.param(name, value.as_str().unwrap());
+        }
+        for pair in fixture["query"].as_array().unwrap() {
+            request = request.query(pair[0].as_str().unwrap(), pair[1].as_str().unwrap());
+        }
+        // All captured bodies are UTF-8, including synthetic multipart files.
+        let body = if fixture["content_type"]
+            .as_str()
+            .is_some_and(|ct| ct.contains("application/json"))
+        {
+            // Exercise arbitrary JSON field handling without relying on key order.
+            request = request.json(&fixture["body_json"]).unwrap();
+            None
+        } else if fixture["body_base64"].as_str().unwrap().is_empty() {
+            None
+        } else {
+            use base64::{engine::general_purpose::STANDARD, Engine};
+            let bytes = STANDARD
+                .decode(fixture["body_base64"].as_str().unwrap())
+                .unwrap();
+            request = request
+                .bytes(bytes.clone(), fixture["content_type"].as_str().unwrap())
+                .unwrap();
+            Some(bytes)
+        };
+        let expected_url = request.url().unwrap();
+        assert_eq!(
+            expected_url.path(),
+            fixture["expected_path"].as_str().unwrap(),
+            "{}",
+            fixture["command"]
+        );
+        let response: Value = request.send().await.unwrap().json().unwrap();
+        assert_eq!(response["method"], operation.method);
+        assert_eq!(
+            response["path"].as_str().unwrap(),
+            format!(
+                "{}{}",
+                expected_url.path(),
+                expected_url
+                    .query()
+                    .map(|q| format!("?{q}"))
+                    .unwrap_or_default()
+            )
+        );
+        if !fixture["body_json"].is_null() {
+            assert_eq!(
+                serde_json::from_str::<Value>(response["body"].as_str().unwrap()).unwrap(),
+                fixture["body_json"]
+            );
+        }
+        if let Some(body) = body {
+            assert_eq!(response["body"].as_str().unwrap().as_bytes(), body);
+        }
+    }
+}
