@@ -3,8 +3,11 @@ use futures_util::StreamExt;
 use std::{
     path::PathBuf,
     process::{Child, Command},
+    sync::atomic::{AtomicU64, Ordering},
     time::{Duration, Instant},
 };
+static FIXTURE_COUNTER: AtomicU64 = AtomicU64::new(0);
+
 struct Fixture {
     process: Child,
     file: PathBuf,
@@ -13,12 +16,13 @@ struct Fixture {
 impl Fixture {
     fn start() -> Self {
         let file = std::env::temp_dir().join(format!(
-            "erebine-fixture-{}-{}.port",
+            "erebine-fixture-{}-{}-{}.port",
             std::process::id(),
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .unwrap()
-                .as_nanos()
+                .as_nanos(),
+            FIXTURE_COUNTER.fetch_add(1, Ordering::Relaxed)
         ));
         let process = Command::new("python3")
             .arg(concat!(
