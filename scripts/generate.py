@@ -11,7 +11,7 @@ for op in ops:
  out.append('pub const '+name+': Operation = Operation { name: '+json.dumps(op['name'])+', method: '+json.dumps(op['method'])+', path: '+json.dumps(op['path'])+', surface: Surface::'+op['surface'].title()+', sources: &['+','.join(json.dumps(s) for s in op['sources'])+'] };')
 out.append('pub const ALL: &[Operation] = &['+','.join(o['name'].upper() for o in ops)+'];')
 # friendly aliases for the most common inference operations
-for alias,name in [('CHAT_COMPLETIONS_CREATE','post_project_id_endpoint_slug_v1_chat_completions'),('RESPONSES_CREATE','post_project_id_endpoint_slug_v1_responses'),('MODELS_LIST','get_project_id_endpoint_slug_v1_models'),('EMBEDDINGS_CREATE','post_project_id_endpoint_slug_v1_embeddings'),('FILES_CREATE','post_project_id_v1_files')]:
+for alias,name in [('MCP_POST','post_project_id_v1_mcp'),('MCP_GET','get_project_id_v1_mcp'),('MCP_DELETE','delete_project_id_v1_mcp'),('CHAT_COMPLETIONS_CREATE','post_project_id_endpoint_slug_v1_chat_completions'),('RESPONSES_CREATE','post_project_id_endpoint_slug_v1_responses'),('MODELS_LIST','get_project_id_endpoint_slug_v1_models'),('EMBEDDINGS_CREATE','post_project_id_endpoint_slug_v1_embeddings'),('FILES_CREATE','post_project_id_v1_files')]:
  out.append('pub const '+alias+': Operation = '+name.upper()+';')
 (root/'src/operations.rs').write_text('\n'.join(out)+'\n')
 import subprocess

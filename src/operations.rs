@@ -224,6 +224,17 @@ pub const DELETE_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID: Operation = 
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/api-reference"],
 };
+/// DELETE /{project_id}/v1/mcp
+pub const DELETE_PROJECT_ID_V1_MCP: Operation = Operation {
+    name: "delete_project_id_v1_mcp",
+    method: "DELETE",
+    path: "/{project_id}/v1/mcp",
+    surface: Surface::Router,
+    sources: &[
+        "https://erebine.ai/docs/mcp",
+        "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports",
+    ],
+};
 /// DELETE /{project_id}/v1/models/{id}
 pub const DELETE_PROJECT_ID_V1_MODELS_ID: Operation = Operation {
     name: "delete_project_id_v1_models_id",
@@ -625,6 +636,14 @@ pub const GET_PROJECT_ID_V1_BATCHES_ID: Operation = Operation {
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/batch"],
 };
+/// GET /{project_id}/v1/chat-templates
+pub const GET_PROJECT_ID_V1_CHAT_TEMPLATES: Operation = Operation {
+    name: "get_project_id_v1_chat_templates",
+    method: "GET",
+    path: "/{project_id}/v1/chat-templates",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/erectl/templates"],
+};
 /// GET /{project_id}/v1/chats/{id}/branches
 pub const GET_PROJECT_ID_V1_CHATS_ID_BRANCHES: Operation = Operation {
     name: "get_project_id_v1_chats_id_branches",
@@ -936,6 +955,17 @@ pub const GET_PROJECT_ID_V1_MANAGEMENT_TIERS: Operation = Operation {
     path: "/{project_id}/v1/management/tiers",
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/private-agents"],
+};
+/// GET /{project_id}/v1/mcp
+pub const GET_PROJECT_ID_V1_MCP: Operation = Operation {
+    name: "get_project_id_v1_mcp",
+    method: "GET",
+    path: "/{project_id}/v1/mcp",
+    surface: Surface::Router,
+    sources: &[
+        "https://erebine.ai/docs/mcp",
+        "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports",
+    ],
 };
 /// GET /{project_id}/v1/mockups/{id}/{path}
 pub const GET_PROJECT_ID_V1_MOCKUPS_ID_PATH: Operation = Operation {
@@ -1956,6 +1986,17 @@ pub const POST_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES: Operation = Opera
     surface: Surface::Router,
     sources: &["https://erebine.ai/docs/api-reference"],
 };
+/// POST /{project_id}/v1/mcp
+pub const POST_PROJECT_ID_V1_MCP: Operation = Operation {
+    name: "post_project_id_v1_mcp",
+    method: "POST",
+    path: "/{project_id}/v1/mcp",
+    surface: Surface::Router,
+    sources: &[
+        "https://erebine.ai/docs/mcp",
+        "https://modelcontextprotocol.io/specification/2025-06-18/basic/transports",
+    ],
+};
 /// POST /{project_id}/v1/models/{id}/hf-overrides/preview
 pub const POST_PROJECT_ID_V1_MODELS_ID_HF_OVERRIDES_PREVIEW: Operation = Operation {
     name: "post_project_id_v1_models_id_hf_overrides_preview",
@@ -2386,6 +2427,7 @@ pub const ALL: &[Operation] = &[
     DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS_ID,
     DELETE_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES_ID,
+    DELETE_PROJECT_ID_V1_MCP,
     DELETE_PROJECT_ID_V1_MODELS_ID,
     DELETE_PROJECT_ID_V1_SLOS_ID,
     DELETE_PROJECT_ID_V1_UPLOADS_ID,
@@ -2433,6 +2475,7 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_INPUT_ITEMS,
     GET_PROJECT_ID_V1_BATCHES,
     GET_PROJECT_ID_V1_BATCHES_ID,
+    GET_PROJECT_ID_V1_CHAT_TEMPLATES,
     GET_PROJECT_ID_V1_CHATS_ID_BRANCHES,
     GET_PROJECT_ID_V1_CONVERSATIONS,
     GET_PROJECT_ID_V1_CONVERSATIONS_ID,
@@ -2469,6 +2512,7 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_HEALTH,
     GET_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES,
     GET_PROJECT_ID_V1_MANAGEMENT_TIERS,
+    GET_PROJECT_ID_V1_MCP,
     GET_PROJECT_ID_V1_MOCKUPS_ID_PATH,
     GET_PROJECT_ID_V1_MODELS,
     GET_PROJECT_ID_V1_MODELS_ID,
@@ -2584,6 +2628,7 @@ pub const ALL: &[Operation] = &[
     POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_INVITATIONS_ID_RESEND,
     POST_PROJECT_ID_V1_MANAGEMENT_PROJECT_MEMBERS,
     POST_PROJECT_ID_V1_MANAGEMENT_SEMANTIC_ROUTER_RULES,
+    POST_PROJECT_ID_V1_MCP,
     POST_PROJECT_ID_V1_MODELS_ID_HF_OVERRIDES_PREVIEW,
     POST_PROJECT_ID_V1_MODELS_ID_REVALIDATE,
     POST_PROJECT_ID_V1_MODELS_ID_SHARE,
@@ -2629,6 +2674,9 @@ pub const ALL: &[Operation] = &[
     PUT_PROJECT_ID_V1_SLOS_ID,
     PUT_PROJECT_ID_V1_WEBHOOKS_ID,
 ];
+pub const MCP_POST: Operation = POST_PROJECT_ID_V1_MCP;
+pub const MCP_GET: Operation = GET_PROJECT_ID_V1_MCP;
+pub const MCP_DELETE: Operation = DELETE_PROJECT_ID_V1_MCP;
 pub const CHAT_COMPLETIONS_CREATE: Operation = POST_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS;
 pub const RESPONSES_CREATE: Operation = POST_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES;
 pub const MODELS_LIST: Operation = GET_PROJECT_ID_ENDPOINT_SLUG_V1_MODELS;

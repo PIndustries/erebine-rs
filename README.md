@@ -3,7 +3,7 @@
 Native, asynchronous Rust SDK for Erebine, maintained by P.Industries.
 Community project; not an official Erebine SDK. MIT licensed.
 
-**Experimental 0.1:** 268 documented HTTP operation bindings, shared with
+**Experimental 0.1:** 272 documented HTTP operation bindings, shared with
 [erebine-swift](https://github.com/PIndustries/erebine-swift). Full API/schema parity
 is the target; public documentation gaps and live verification remain. Read
 [COVERAGE.md](COVERAGE.md) before depending on an operation in production.
@@ -110,3 +110,44 @@ cargo doc --no-deps
 Run live examples only after configuring the required environment variables;
 they contact Erebine and may incur inference charges. Tests use loopback fixtures.
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md), and [NOTICE](NOTICE).
+
+## MCP sessions
+
+Native request/response MCP sessions support initialization, session IDs, negotiated
+protocol headers, JSON and finite SSE responses, notifications, tool discovery,
+explicit tool calls, and session termination. Pagination is explicit. Use the
+server's `nextCursor` with the next list request. Generic calls also support
+resources, prompts, ping, and future JSON-RPC methods. Tool results containing
+`isError` remain results so the caller can inspect their structured content.
+
+Set `X-Erebine-Workspace` on the dedicated client's headers to scope MCP to an
+explicit workspace; inference routing alone does not set MCP's workspace header.
+No sampling, roots, elicitation, subscription listener, or reconnect/resume support
+is advertised. No tools are called implicitly.
+
+```rust,no_run
+use erebine::{mcp::McpSession, Client, json};
+# async fn example(client: Client) -> Result<(), Box<dyn std::error::Error>> {
+let mut session = McpSession::connect(client).await?;
+let tools = session.list_tools(None).await?;
+// Explicit invocation only; inspect the discovered inputSchema first.
+// session.call_tool(name, arguments).await? uses the discovered schema.
+session.close().await?;
+# Ok(()) }
+```
+
+`examples/live_smoke.rs` provides opt-in, bounded account validation via a loopback
+SSH proxy. Its remote proxy must inject credentials; no account key is received
+by the SDK process. It is not part of `cargo test`. See [live validation](LIVE_VALIDATION.md).
+
+Run the bundled SSH validation runner against an existing Erebine OpenCode provider
+configuration on your own host (workspace-scoped direct base URL required):
+
+```sh
+python3 scripts/validate_live.py --ssh-host YOUR_SSH_ALIAS --opencode-config /path/to/opencode.json --model YOUR_MODEL_ID --mcp-only
+```
+
+Omit `--mcp-only` to run bounded Chat Completions, Responses, and streaming checks;
+those requests may incur inference charges. Use `--sudo` only when the remote
+configuration requires it. The runner closes its temporary remote proxy on exit.
+It does not modify the provider configuration or persist credentials locally.

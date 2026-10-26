@@ -240,3 +240,23 @@ fn direct_semantic_and_custom_domain_routing() {
         "/ws/_semantic/router/v1/models"
     );
 }
+
+#[tokio::test]
+async fn mcp_session_negotiation_json_sse_calls_errors_and_close() {
+    let f = Fixture::start();
+    let c = f.client();
+    let mut session = erebine::mcp::McpSession::connect(c).await.unwrap();
+    assert_eq!(session.initialization["protocolVersion"], "2025-06-18");
+    let tools = session.list_tools(None).await.unwrap();
+    assert_eq!(tools["tools"][0]["name"], "fixture.echo");
+    let result = session
+        .call_tool("fixture.echo", json!({"text":"hello"}))
+        .await
+        .unwrap();
+    assert_eq!(result["structuredContent"]["text"], "hello");
+    assert!(
+        matches!(session.call("unknown",json!({})).await,Err(Error::Rpc(ref e)) if e["code"]==-32601 && e["x_vendor"]==true)
+    );
+    session.close().await.unwrap();
+    assert!(session.list_tools(None).await.is_err());
+}

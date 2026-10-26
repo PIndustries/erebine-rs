@@ -3,6 +3,7 @@
 //! Every catalog operation returns a request builder supporting JSON, multipart,
 //! binary bodies, repeated query parameters, headers, and SSE. Unknown JSON fields
 //! remain available. See the repository coverage report for verification boundaries.
+pub mod mcp;
 pub mod operations;
 pub mod sse;
 pub mod types;
@@ -35,6 +36,8 @@ pub enum Error {
         body: Vec<u8>,
         headers: Box<HeaderMap>,
     },
+    #[error("MCP remote JSON-RPC error")]
+    Rpc(Value),
     #[error("invalid SSE stream: {0}")]
     Stream(String),
 }
