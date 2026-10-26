@@ -38,14 +38,16 @@ impl ChatAccumulator {
                 "server sent an inference error event; inspect the raw event".into(),
             ));
         }
-        if let Some(id) = value.get("id").and_then(Value::as_str) {
-            self.id = Some(id.into());
-        }
-        if let Some(model) = value.get("model").and_then(Value::as_str) {
-            self.model = Some(model.into());
-        }
-        if let Some(usage) = value.get("usage").filter(|v| !v.is_null()) {
-            self.usage = Some(usage.clone());
+        if value.get("choices").is_some_and(Value::is_array) {
+            if let Some(id) = value.get("id").and_then(Value::as_str) {
+                self.id = Some(id.into());
+            }
+            if let Some(model) = value.get("model").and_then(Value::as_str) {
+                self.model = Some(model.into());
+            }
+            if let Some(usage) = value.get("usage").filter(|v| !v.is_null()) {
+                self.usage = Some(usage.clone());
+            }
         }
         if let Some(choices) = value.get("choices").and_then(Value::as_array) {
             for item in choices {

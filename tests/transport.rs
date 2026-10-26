@@ -436,9 +436,9 @@ async fn inference_streaming_assembles_tool_calls_reasoning_and_usage() {
 fn stream_interleaving_and_tool_round_trip_helpers() {
     let mut a = erebine::accumulator::ChatAccumulator::default();
     for value in [
-        json!({"choices":[{"index":1,"delta":{"content":"B","refusal":"refused","reasoning_content":null,"reasoning":"R"}},{"index":0,"delta":{"tool_calls":[{"index":1,"id":"b","function":{"name":"sum","arguments":"{\"b\":"}},{"index":0,"id":"a","function":{"name":"echo","arguments":"{\"a\":"}}]}}]}),
+        json!({"id":"chat_original","model":"model_original","choices":[{"index":1,"delta":{"content":"B","refusal":"refused","reasoning_content":null,"reasoning":"R"}},{"index":0,"delta":{"tool_calls":[{"index":1,"id":"b","function":{"name":"sum","arguments":"{\"b\":"}},{"index":0,"id":"a","function":{"name":"echo","arguments":"{\"a\":"}}]}}]}),
         json!({"choices":[{"index":0,"delta":{"tool_calls":[{"index":0,"function":{"arguments":"1}"}},{"index":1,"function":{"arguments":"2}"}}]}},{"index":1,"delta":{"content":"2"},"finish_reason":"future_reason"}]}),
-        json!({"type":"x_future","vendor":{"kept":true},"error":null}),
+        json!({"type":"x_future","id":"vendor_event","model":"vendor_model","usage":{"total_tokens":999},"vendor":{"kept":true},"error":null}),
     ] {
         a.push_json(value).unwrap();
     }
@@ -447,6 +447,9 @@ fn stream_interleaving_and_tool_round_trip_helpers() {
     assert_eq!(a.choices[&1].reasoning, "R");
     assert_eq!(a.choices[&0].tool_calls[&1].arguments, "{\"b\":2}");
     assert_eq!(a.raw.len(), 3);
+    assert_eq!(a.id.as_deref(), Some("chat_original"));
+    assert_eq!(a.model.as_deref(), Some("model_original"));
+    assert!(a.usage.is_none());
     assert!(a
         .push_json(json!({"error":{"code":"future_error"}}))
         .is_err());
