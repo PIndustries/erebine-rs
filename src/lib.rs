@@ -3,8 +3,12 @@
 //! Every catalog operation returns a request builder supporting JSON, multipart,
 //! binary bodies, repeated query parameters, headers, and SSE. Unknown JSON fields
 //! remain available. See the repository coverage report for verification boundaries.
+pub mod accumulator;
+pub mod inference;
 pub mod mcp;
 pub mod operations;
+#[cfg(feature = "realtime")]
+pub mod realtime;
 pub mod sse;
 pub mod types;
 
@@ -38,6 +42,9 @@ pub enum Error {
     },
     #[error("MCP remote JSON-RPC error")]
     Rpc(Value),
+    #[cfg(feature = "realtime")]
+    #[error("WebSocket transport failed: {0}")]
+    Realtime(Box<tokio_tungstenite::tungstenite::Error>),
     #[error("invalid SSE stream: {0}")]
     Stream(String),
 }
@@ -97,6 +104,7 @@ pub struct Client {
     routing: Option<Routing>,
     surface: Surface,
     omit_project: bool,
+    request_timeout: Duration,
 }
 impl std::fmt::Debug for Client {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -134,6 +142,7 @@ impl Client {
             routing: None,
             surface,
             omit_project: false,
+            request_timeout: Duration::from_secs(300),
         })
     }
     pub fn router(api_key: &str, project: &str, routing: Routing) -> Result<Self, Error> {
@@ -173,6 +182,7 @@ impl Client {
         self
     }
     pub fn timeout(mut self, duration: Duration) -> Result<Self, Error> {
+        self.request_timeout = duration;
         self.http = reqwest::Client::builder()
             .redirect(reqwest::redirect::Policy::none())
             .timeout(duration)

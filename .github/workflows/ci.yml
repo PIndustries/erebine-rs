@@ -19,6 +19,7 @@ jobs:
       - run: python scripts/generate.py
       - run: git diff --exit-code -- src/operations.rs
       - run: cargo fmt --check
-      - run: cargo clippy --all-targets --locked -- -D warnings
-      - run: cargo test --all-targets --locked
-      - run: cargo doc --no-deps --locked
+      - run: cargo check --no-default-features --locked
+      - run: cargo clippy --all-targets --all-features --locked -- -D warnings
+      - run: cargo test --all-targets --all-features --locked
+      - run: cargo doc --no-deps --all-features --locked

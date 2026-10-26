@@ -596,6 +596,14 @@ pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_MODELS: Operation = Operation {
         "https://erebine.ai/docs/sdk-integrations",
     ],
 };
+/// GET /{project_id}/{endpoint_slug}/v1/models/{id}
+pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_MODELS_ID: Operation = Operation {
+    name: "get_project_id_endpoint_slug_v1_models_id",
+    method: "GET",
+    path: "/{project_id}/{endpoint_slug}/v1/models/{id}",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/sdk-integrations"],
+};
 /// GET /{project_id}/{endpoint_slug}/v1/responses
 pub const GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES: Operation = Operation {
     name: "get_project_id_endpoint_slug_v1_responses",
@@ -2470,6 +2478,7 @@ pub const ALL: &[Operation] = &[
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_CHAT_COMPLETIONS_ID_MESSAGES,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_MODELS,
+    GET_PROJECT_ID_ENDPOINT_SLUG_V1_MODELS_ID,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID,
     GET_PROJECT_ID_ENDPOINT_SLUG_V1_RESPONSES_ID_INPUT_ITEMS,

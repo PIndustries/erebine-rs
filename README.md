@@ -3,10 +3,17 @@
 Native, asynchronous Rust SDK for Erebine, maintained by P.Industries.
 Community project; not an official Erebine SDK. MIT licensed.
 
-**Experimental 0.1:** 272 documented HTTP operation bindings, shared with
+**Experimental 0.1:** 273 documented HTTP operation bindings, shared with
 [erebine-swift](https://github.com/PIndustries/erebine-swift). Full API/schema parity
 is the target; public documentation gaps and live verification remain. Read
 [COVERAGE.md](COVERAGE.md) before depending on an operation in production.
+
+
+**Inference-first SDK:** named inference APIs, typed request helpers, tool-result
+messages, structured-output passthrough, stream assembly, audio, and native
+realtime transcription are available. Start with [INFERENCE.md](INFERENCE.md)
+for integration examples and a per-feature verification matrix. Management
+expansion is deferred.
 
 ## Install
 
