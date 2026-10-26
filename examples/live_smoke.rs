@@ -77,6 +77,28 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     assert!(count > 0);
     println!("stream: {count} JSON events decoded, usage={usage}");
+    let request = erebine::types::ResponsesRequest::new(model, json!("Reply only with SDK_OK."));
+    let mut request = request;
+    request.extra.insert("max_output_tokens".into(), json!(64));
+    request.extra.insert("store".into(), json!(false));
+    let mut events = client
+        .inference()
+        .stream_responses(&request)?
+        .stream()
+        .await?;
+    let mut response_events = 0;
+    let mut terminal = false;
+    while let Some(event) = events.next().await {
+        let value = event?.json()?;
+        assert!(
+            value["type"] != "response.failed" && value["type"] != "error",
+            "Responses stream error"
+        );
+        terminal |= value["type"] == "response.completed" || value["type"] == "response.incomplete";
+        response_events += 1;
+    }
+    assert!(terminal && response_events > 0);
+    println!("responses SSE: {response_events} JSON events and terminal response decoded");
     let retrieved = client.inference().model(model).send().await?;
     assert_eq!(retrieved.json::<Value>()?["id"], model);
     println!("model retrieval: HTTP {}", retrieved.status);
