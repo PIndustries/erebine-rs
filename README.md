@@ -3,7 +3,7 @@
 Native, asynchronous Rust SDK for Erebine, maintained by P.Industries.
 Community project; not an official Erebine SDK. MIT licensed.
 
-**Experimental 0.1:** 380 documentation/CLI-derived HTTP operation bindings, shared with
+**Experimental release 26.10.27.1** (`26.10.27-build.1`): 380 documentation/CLI-derived HTTP operation bindings, shared with
 [erebine-swift](https://github.com/PIndustries/erebine-swift). Full API/schema parity
 is the target; live verification and authoritative schema reconciliation remain. Read
 [COVERAGE.md](COVERAGE.md) before depending on an operation in production.
@@ -20,13 +20,19 @@ MCP prompts, resources, subscriptions, and GET/resume are covered in [MCP.md](MC
 
 ## Install
 
-Until a crates.io release is published:
+Release name: `26.10.27.1`; package version and Git tag: `26.10.27-build.1`.
+See [release versioning](RELEASING.md). Until crates.io publication is confirmed,
+use the pinned Git dependency:
 
 ```toml
 [dependencies]
-erebine-rs = { git = "https://github.com/PIndustries/erebine-rs" }
+erebine-rs = { git = "https://github.com/PIndustries/erebine-rs", tag = "26.10.27-build.1" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
+
+After registry publication, the exact dependency will be
+`erebine-rs = "=26.10.27-build.1"`. Registry publication is currently pending;
+the Git dependency above is the available installation path.
 
 The crate imports as `erebine`. HTTPS uses rustls; no Python/Node runtime or
 Erebine CLI is needed by the SDK. Python 3 is used only by the test fixture.

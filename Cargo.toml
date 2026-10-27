@@ -1,6 +1,6 @@
 [package]
 name = "erebine-rs"
-version = "0.1.0"
+version = "26.10.27-build.1"
 edition = "2021"
 description = "Community native Rust SDK for Erebine inference and platform APIs"
 license = "MIT"
