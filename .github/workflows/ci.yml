@@ -24,3 +24,4 @@ jobs:
       - run: cargo clippy --all-targets --all-features --locked -- -D warnings
       - run: cargo test --all-targets --all-features --locked
       - run: cargo doc --no-deps --all-features --locked
+      - run: python3 scripts/test_worker_validation.py --sdk rust

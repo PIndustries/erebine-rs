@@ -318,6 +318,18 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                             .is_some_and(|a| a.len() >= min.as_u64().unwrap() as usize);
                     }
                 }
+                if let Some(numbers) = step.get("min_numbers").and_then(Value::as_object) {
+                    for (pointer, minimum) in numbers {
+                        passed &= body
+                            .as_ref()
+                            .and_then(|b| b.pointer(pointer))
+                            .and_then(Value::as_f64)
+                            .zip(minimum.as_f64())
+                            .is_some_and(|(actual, minimum)| {
+                                actual.is_finite() && actual >= minimum
+                            });
+                    }
+                }
                 results.push(json!({"name":name,"status":response.status,"result":if passed {"passed"} else {"response_contract_failed"},"json_fields":body.as_ref().and_then(Value::as_object).map(|o|o.keys().cloned().collect::<Vec<_>>())}));
             }
             Err(Error::Api { status, body, .. }) => {
