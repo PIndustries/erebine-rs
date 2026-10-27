@@ -3,7 +3,7 @@
 Native, asynchronous Rust SDK for Erebine, maintained by P.Industries.
 Community project; not an official Erebine SDK. MIT licensed.
 
-**Experimental 0.1:** 379 documentation/CLI-derived HTTP operation bindings, shared with
+**Experimental 0.1:** 380 documentation/CLI-derived HTTP operation bindings, shared with
 [erebine-swift](https://github.com/PIndustries/erebine-swift). Full API/schema parity
 is the target; live verification and authoritative schema reconciliation remain. Read
 [COVERAGE.md](COVERAGE.md) before depending on an operation in production.

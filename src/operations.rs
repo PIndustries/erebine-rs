@@ -3577,6 +3577,14 @@ pub const PUT_PROJECT_ID_V1_WEBHOOKS_ID: Operation = Operation {
         "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
+/// POST /{project_id}/v1/chats/{id}/messages
+pub const POST_PROJECT_ID_V1_CHATS_ID_MESSAGES: Operation = Operation {
+    name: "post_project_id_v1_chats_id_messages",
+    method: "POST",
+    path: "/{project_id}/v1/chats/{id}/messages",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/erectl/chat"],
+};
 pub const ALL: &[Operation] = &[
     DELETE_BILLING_BUDGETS_ID,
     DELETE_CHAT_API_ID_1_BRANCH_ID_2,
@@ -3957,6 +3965,7 @@ pub const ALL: &[Operation] = &[
     PUT_PROJECT_ID_V1_MANAGEMENT_EVOLUTION_ID_LANE_ENABLE,
     PUT_PROJECT_ID_V1_SLOS_ID,
     PUT_PROJECT_ID_V1_WEBHOOKS_ID,
+    POST_PROJECT_ID_V1_CHATS_ID_MESSAGES,
 ];
 pub const MCP_POST: Operation = POST_PROJECT_ID_V1_MCP;
 pub const MCP_GET: Operation = GET_PROJECT_ID_V1_MCP;

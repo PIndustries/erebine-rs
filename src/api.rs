@@ -2425,4 +2425,10 @@ impl<'a> Api<'a> {
             .operation(operations::PUT_PROJECT_ID_V1_WEBHOOKS_ID)
             .param("id", id)
     }
+    /// POST /{project_id}/v1/chats/{id}/messages
+    pub fn post_project_id_v1_chats_id_messages(&self, id: &str) -> Request<'a> {
+        self.client
+            .operation(operations::POST_PROJECT_ID_V1_CHATS_ID_MESSAGES)
+            .param("id", id)
+    }
 }

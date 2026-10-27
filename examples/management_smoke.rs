@@ -44,6 +44,35 @@ fn operation(name: &str) -> Result<erebine::Operation, Error> {
         .copied()
         .ok_or_else(|| Error::Invalid("scenario operation missing".into()))
 }
+fn selected(item: &Value, spec: &Value) -> bool {
+    let candidate = &item[spec["field"].as_str().unwrap()];
+    candidate == &spec["equals"]
+        || (spec["uuid_compare"] == true
+            && candidate
+                .as_str()
+                .zip(spec["equals"].as_str())
+                .is_some_and(|(a, b)| a.len() == 36 && b.len() == 36 && a.eq_ignore_ascii_case(b)))
+}
+fn poll_ready(body: &Option<Value>, step: &Value, poll: &Value) -> bool {
+    if let Some(pointer) = poll["pointer"].as_str() {
+        return body
+            .as_ref()
+            .and_then(|b| b.pointer(pointer))
+            .is_some_and(|v| {
+                poll["values"]
+                    .as_array()
+                    .is_some_and(|values| values.contains(v))
+            });
+    }
+    if let Some(spec) = step.get("save_match") {
+        return body
+            .as_ref()
+            .and_then(|b| b.pointer(spec["pointer"].as_str().unwrap()))
+            .and_then(Value::as_array)
+            .is_some_and(|items| items.iter().any(|item| selected(item, spec)));
+    }
+    true
+}
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
     let origin = std::env::var("EREBINE_MANAGEMENT_PROXY")?;
     if !origin.starts_with("http://127.0.0.1:") {
@@ -77,7 +106,9 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
         .ok_or("scenario steps missing")?
     {
         let name = original["name"].as_str().unwrap_or("unnamed");
-        let step = match resolve(original, &vars) {
+        let mut request_spec = original.clone();
+        request_spec.as_object_mut().unwrap().remove("cleanup");
+        let step = match resolve(&request_spec, &vars) {
             Ok(s) => s,
             Err(_) => {
                 results.push(json!({"name":name,"result":"skipped_dependency"}));
@@ -135,12 +166,54 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
         }
         let sent_path = request.url()?.path().to_owned();
         match request.send().await {
-            Ok(response) => {
+            Ok(mut response) => {
+                let mut poll_failed = false;
+                if let Some(poll) = step.get("poll") {
+                    if operation(step["operation"].as_str().unwrap())?.method != "GET" {
+                        return Err("Polling is limited to GET requests".into());
+                    }
+                    for _ in 1..poll["attempts"].as_u64().unwrap_or(20).clamp(1, 300) {
+                        if poll_ready(&response.json::<Value>().ok(), &step, poll) {
+                            break;
+                        }
+                        tokio::time::sleep(std::time::Duration::from_millis(
+                            poll["delay_ms"].as_u64().unwrap_or(1000).clamp(100, 2000),
+                        ))
+                        .await;
+                        let mut next =
+                            client.operation(operation(step["operation"].as_str().unwrap())?);
+                        for (name, value) in step["parameters"].as_object().unwrap() {
+                            next = next.param(name, value.as_str().unwrap());
+                        }
+                        if let Some(headers) = step["headers"].as_object() {
+                            for (name, value) in headers {
+                                next = next.header(name, value.as_str().unwrap())?;
+                            }
+                        }
+                        if let Some(pairs) = step["query"].as_array() {
+                            for pair in pairs {
+                                next = next
+                                    .query(pair[0].as_str().unwrap(), pair[1].as_str().unwrap());
+                            }
+                        }
+                        match next.send().await {
+                            Ok(value) => response = value,
+                            Err(_) => {
+                                poll_failed = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if let Some(poll) = step.get("poll") {
+                    poll_failed |= !poll_ready(&response.json::<Value>().ok(), &step, poll);
+                }
                 if operation(step["operation"].as_str().unwrap())?.method == "DELETE" {
                     cleaned_paths.insert(sent_path);
                 }
                 let body = response.json::<Value>().ok();
-                let mut passed = step.get("expected_error").is_none()
+                let mut passed = !poll_failed
+                    && step.get("expected_error").is_none()
                     && step
                         .get("expected_status")
                         .and_then(Value::as_array)
@@ -158,6 +231,15 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                         .and_then(|items| {
                             items.iter().find(|item| {
                                 item.get(spec["field"].as_str().unwrap()) == spec.get("equals")
+                                    || (spec["uuid_compare"] == true
+                                        && item[spec["field"].as_str().unwrap()]
+                                            .as_str()
+                                            .zip(spec["equals"].as_str())
+                                            .is_some_and(|(a, b)| {
+                                                a.len() == 36
+                                                    && b.len() == 36
+                                                    && a.eq_ignore_ascii_case(b)
+                                            }))
                             })
                         })
                         .and_then(|item| item.pointer(spec["value_pointer"].as_str().unwrap()))
@@ -213,6 +295,15 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                 if let Some(assertions) = step.get("assertions").and_then(Value::as_object) {
                     for (pointer, expected) in assertions {
                         passed &= body.as_ref().and_then(|b| b.pointer(pointer)) == Some(expected);
+                    }
+                }
+                if let Some(assertions) = step.get("contains").and_then(Value::as_object) {
+                    for (pointer, expected) in assertions {
+                        passed &= body
+                            .as_ref()
+                            .and_then(|b| b.pointer(pointer))
+                            .and_then(Value::as_str)
+                            .is_some_and(|v| v.contains(expected.as_str().unwrap()));
                     }
                 }
                 if let Some(expected) = step.get("expected_text").and_then(Value::as_str) {
