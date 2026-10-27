@@ -695,6 +695,29 @@ async fn native_api_methods_and_workspace_endpoint_routing() {
         .json()
         .unwrap();
     assert_eq!(echo["method"], "OPTIONS");
+    let scoped: Value = client
+        .api()
+        .patch_project_id_v1_workspaces_id_1_chat_templates_id_2("ws fixture", "ctpl fixture")
+        .json(&json!({"system_prompt":"Synthetic scoped template"}))
+        .unwrap()
+        .send()
+        .await
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(
+        scoped["path"],
+        "/proj_test/v1/workspaces/ws%20fixture/chat-templates/ctpl%20fixture"
+    );
+    let deleted: Value = client
+        .api()
+        .delete_project_id_v1_workspaces_id_1_chat_templates_id_2("ws fixture", "ctpl fixture")
+        .send()
+        .await
+        .unwrap()
+        .json()
+        .unwrap();
+    assert_eq!(deleted["method"], "DELETE");
     let wrong = Client::new(&f.origin, Surface::Dashboard)
         .unwrap()
         .api()

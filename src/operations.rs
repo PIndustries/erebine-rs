@@ -414,6 +414,14 @@ pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AUTO_APPROVALS_ID_2: Operation = 
     surface: Surface::Router,
     sources: &["https://github.com/erebine/binaries/releases/tag/v2.7.3"],
 };
+/// DELETE /{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}
+pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2: Operation = Operation {
+    name: "delete_project_id_v1_workspaces_id_1_chat_templates_id_2",
+    method: "DELETE",
+    path: "/{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/erectl/templates"],
+};
 /// DELETE /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
 pub const DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2: Operation = Operation {
     name: "delete_project_id_v1_workspaces_id_1_decisions_id_2",
@@ -2174,6 +2182,14 @@ pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID: Operation = Operation {
         "https://github.com/erebine/binaries/releases/tag/v2.7.3",
     ],
 };
+/// PATCH /{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}
+pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2: Operation = Operation {
+    name: "patch_project_id_v1_workspaces_id_1_chat_templates_id_2",
+    method: "PATCH",
+    path: "/{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}",
+    surface: Surface::Router,
+    sources: &["https://erebine.ai/docs/erectl/templates"],
+};
 /// PATCH /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
 pub const PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2: Operation = Operation {
     name: "patch_project_id_v1_workspaces_id_1_decisions_id_2",
@@ -3605,6 +3621,7 @@ pub const ALL: &[Operation] = &[
     DELETE_PROJECT_ID_V1_WORKSPACES_ID,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AGENTS_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_AUTO_APPROVALS_ID_2,
+    DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_FILES_ID_2,
     DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_MEMBERS_ID_2,
@@ -3792,6 +3809,7 @@ pub const ALL: &[Operation] = &[
     PATCH_PROJECT_ID_V1_SETTINGS_PROJECT,
     PATCH_PROJECT_ID_V1_USER_PREFERENCES,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID,
+    PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_DECISIONS_ID_2,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MEMORIES_ID_2,
     PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_MILESTONES_ID_2,

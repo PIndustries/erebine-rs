@@ -63,9 +63,15 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
         .into_iter()
         .collect();
     let client = bootstrap.project(config["project_id"].as_str().ok_or("project id missing")?);
-    let scenarios: Value = serde_json::from_str(include_str!("../api/management-scenarios.json"))?;
+    let scenario_text = if let Ok(path) = std::env::var("EREBINE_MANAGEMENT_SCENARIOS") {
+        std::fs::read_to_string(path)?
+    } else {
+        include_str!("../api/management-scenarios.json").to_owned()
+    };
+    let scenarios: Value = serde_json::from_str(&scenario_text)?;
     let mut results = vec![];
     let mut cleanup: Vec<Value> = vec![];
+    let mut cleaned_paths = std::collections::BTreeSet::new();
     for original in scenarios["steps"]
         .as_array()
         .ok_or("scenario steps missing")?
@@ -89,6 +95,23 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                 request = request.header(name, value.as_str().ok_or("header not a string")?)?;
             }
         }
+        if let Some(pairs) = step.get("query").and_then(Value::as_array) {
+            for pair in pairs {
+                request = request.query(
+                    pair[0].as_str().ok_or("query name missing")?,
+                    pair[1].as_str().ok_or("query value missing")?,
+                );
+            }
+        }
+        if let Some(encoded) = step.get("body_base64").and_then(Value::as_str) {
+            use base64::{engine::general_purpose::STANDARD, Engine};
+            request = request.bytes(
+                STANDARD.decode(encoded)?,
+                step["content_type"]
+                    .as_str()
+                    .unwrap_or("application/octet-stream"),
+            )?;
+        }
         if let Some(body) = step.get("body") {
             request = request.json(body)?;
         }
@@ -107,10 +130,45 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
             multipart = multipart.part(file["field"].as_str().unwrap().to_owned(), part);
             request = request.multipart(multipart);
         }
+        if let Some(ms) = step["delay_ms"].as_u64() {
+            tokio::time::sleep(std::time::Duration::from_millis(ms.min(5000))).await;
+        }
+        let sent_path = request.url()?.path().to_owned();
         match request.send().await {
             Ok(response) => {
+                if operation(step["operation"].as_str().unwrap())?.method == "DELETE" {
+                    cleaned_paths.insert(sent_path);
+                }
                 let body = response.json::<Value>().ok();
-                let mut passed = true;
+                let mut passed = step.get("expected_error").is_none()
+                    && step
+                        .get("expected_status")
+                        .and_then(Value::as_array)
+                        .map(|values| {
+                            values
+                                .iter()
+                                .any(|s| s.as_u64() == Some(response.status.into()))
+                        })
+                        .unwrap_or(true);
+                if let Some(spec) = step.get("save_match") {
+                    let selected = body
+                        .as_ref()
+                        .and_then(|b| b.pointer(spec["pointer"].as_str().unwrap()))
+                        .and_then(Value::as_array)
+                        .and_then(|items| {
+                            items.iter().find(|item| {
+                                item.get(spec["field"].as_str().unwrap()) == spec.get("equals")
+                            })
+                        })
+                        .and_then(|item| item.pointer(spec["value_pointer"].as_str().unwrap()))
+                        .filter(|v| v.is_string())
+                        .cloned();
+                    if let Some(value) = selected {
+                        vars.insert(spec["variable"].as_str().unwrap().to_owned(), value);
+                    } else {
+                        passed = false;
+                    }
+                }
                 if let Some(save) = original.get("save").and_then(Value::as_object) {
                     for (key, pointers) in save {
                         let found = pointers.as_array().unwrap().iter().find_map(|p| {
@@ -131,6 +189,25 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                         } else {
                             passed = false;
                         }
+                    }
+                }
+                if let Some(spec) = step.get("cleanup_matching") {
+                    if let Some(items) = body
+                        .as_ref()
+                        .and_then(|b| b.pointer(spec["pointer"].as_str().unwrap()))
+                        .and_then(Value::as_array)
+                    {
+                        for item in items.iter().filter(|item| {
+                            item[spec["field"].as_str().unwrap()]
+                                .as_str()
+                                .is_some_and(|v| v.starts_with(spec["prefix"].as_str().unwrap()))
+                        }) {
+                            if let Some(id) = item["id"].as_str() {
+                                cleanup.push(json!({"method":"DELETE","path":spec["path"].as_str().unwrap().replace("{id}",id)}));
+                            }
+                        }
+                    } else {
+                        passed = false;
                     }
                 }
                 if let Some(assertions) = step.get("assertions").and_then(Value::as_object) {
@@ -156,8 +233,14 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
                 let code = serde_json::from_slice::<Value>(&body)
                     .ok()
                     .and_then(|b| b["error"]["code"].as_str().map(str::to_owned));
-                results
-                    .push(json!({"name":name,"status":status,"result":if code.as_deref()==Some("no_active_endpoint") {"environment_unavailable"} else {"http_failed"},"code":code}));
+                let expected = original.get("expected_error").is_some_and(|e| {
+                    e["status"].as_u64() == Some(status.into())
+                        && e.get("codes")
+                            .and_then(Value::as_array)
+                            .map(|codes| codes.iter().any(|c| c.as_str() == code.as_deref()))
+                            .unwrap_or(true)
+                });
+                results.push(json!({"name":name,"status":status,"result":if expected {"expected_rejection"} else if code.as_deref()==Some("no_active_endpoint") {"environment_unavailable"} else {"http_failed"},"code":code}));
             }
             Err(_) => results.push(json!({"name":name,"result":"transport_failed"})),
         }
@@ -170,6 +253,9 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
             if let Some(value) = value.as_str() {
                 path = path.replace(&format!("{{{name}}}"), value);
             }
+        }
+        if !cleaned_paths.insert(path.clone()) {
+            continue;
         }
         let mut request = client.request(spec["method"].as_str().unwrap(), &path);
         if let Some(headers) = spec.get("headers").and_then(Value::as_object) {
@@ -190,16 +276,27 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
             Err(_) => cleanup_results.push(json!({"result":"transport_failed"})),
         }
     }
+    let failed = results.iter().any(|r| {
+        matches!(
+            r["result"].as_str(),
+            Some("http_failed" | "transport_failed" | "response_contract_failed")
+        )
+    }) || cleanup_results
+        .iter()
+        .any(|r| matches!(r["result"].as_str(), Some("failed" | "transport_failed")));
     println!(
         "{}",
         serde_json::to_string(&json!({"sdk":"rust","steps":results,"cleanup":cleanup_results}))?
     );
+    if failed {
+        return Err("live validation has failed checks or cleanup".into());
+    }
     Ok(())
 }
 #[tokio::main]
 async fn main() {
-    if let Err(error) = run().await {
-        eprintln!("Management validation could not complete: {error}");
+    if run().await.is_err() {
+        eprintln!("Management validation did not complete; credentials and project values were not logged.");
         std::process::exit(1);
     }
 }

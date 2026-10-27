@@ -335,6 +335,17 @@ impl<'a> Api<'a> {
             .param("id_1", id_1)
             .param("id_2", id_2)
     }
+    /// DELETE /{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}
+    pub fn delete_project_id_v1_workspaces_id_1_chat_templates_id_2(
+        &self,
+        id_1: &str,
+        id_2: &str,
+    ) -> Request<'a> {
+        self.client
+            .operation(operations::DELETE_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2)
+            .param("id_1", id_1)
+            .param("id_2", id_2)
+    }
     /// DELETE /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
     pub fn delete_project_id_v1_workspaces_id_1_decisions_id_2(
         &self,
@@ -1477,6 +1488,17 @@ impl<'a> Api<'a> {
         self.client
             .operation(operations::PATCH_PROJECT_ID_V1_WORKSPACES_ID)
             .param("id", id)
+    }
+    /// PATCH /{project_id}/v1/workspaces/{id_1}/chat-templates/{id_2}
+    pub fn patch_project_id_v1_workspaces_id_1_chat_templates_id_2(
+        &self,
+        id_1: &str,
+        id_2: &str,
+    ) -> Request<'a> {
+        self.client
+            .operation(operations::PATCH_PROJECT_ID_V1_WORKSPACES_ID_1_CHAT_TEMPLATES_ID_2)
+            .param("id_1", id_1)
+            .param("id_2", id_2)
     }
     /// PATCH /{project_id}/v1/workspaces/{id_1}/decisions/{id_2}
     pub fn patch_project_id_v1_workspaces_id_1_decisions_id_2(
